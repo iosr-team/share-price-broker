@@ -1,12 +1,11 @@
  -----
- Title Here
+ index
  -----
- Author Here
+ Szymon Gut, Bartłomiej Puto
  -----
 
 Share Price Broker
 
- A system of JMS brokers sending share prices.
- 
- Page under construction!
+ System brokerów JMS przesyłających informacje n/t kursów akcji. Broker centralny rozsyła informacje do brokerów odpowiedzialnych za dany indeks giełdowy (model w którym z jednej kolejki mozemy rozsyłać do innych). 
+Każdy z odziałów ma proste GUI w którym śledzi aktualne wyniki danego indeksu giełdowego.
 
