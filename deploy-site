@@ -1,0 +1,6 @@
+#!/bin/bash
+
+mvn site-deploy
+cd site
+git commit -am "github page updated"
+git push
