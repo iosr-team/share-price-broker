@@ -8,7 +8,12 @@
     </links>
 
     <menu name="Dokumentacja techniczna" >
-      <item name="Przypadki użycia" href="usecase.html" />
+		<item name="Założenia i decyzje projektowe" href="miscellaneous.html" />
+      	<item name="Przypadki użycia" href="usecase.html" />
+      	<item name="Architektura" href="architecture.html" >
+        	<item name="Provider" href="provider_architecture.html" />
+          	<item name="Client" href="client_architecture.html" />
+     	</item>
     </menu>
     <menu name="Spotkania">
         <item name="Minutki" href="minutes.html">
