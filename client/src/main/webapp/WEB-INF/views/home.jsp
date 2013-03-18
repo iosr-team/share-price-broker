@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	Hello, I will be a JMS Client!  
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
