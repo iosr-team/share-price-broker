@@ -1,11 +1,9 @@
 target/
+bin/
 
 .settings/
 .classpath
 .project
 .springBeans
-
-client/bin
-provider/bin
 
 *~
