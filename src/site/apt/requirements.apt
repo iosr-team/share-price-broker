@@ -1,0 +1,25 @@
+ -----
+ Specyfikacja wymagań
+ -----
+ Szymon Gut, Bartłomiej Puto
+ -----
+ 
+
+Wymagania funkcjonalne
+
+  * prezentowanie aktualnych i archiwalnych notowań giełdowych akcji
+
+  * możliwość wyboru spółek, których notowania mają być śledzone i prezentowane
+
+  * aplikacja kliencka z interfejsem webowym
+
+
+Wymagania niefunkcjonalne
+
+  * wdrożenie aplikacji w systemie chmurowym PaaS CloudFoundry
+  
+  * obsługa wielu niezależnych tenantów 	
+
+  * zgdoność aplikacji webowej ze standardami internetowymi
+  
+
