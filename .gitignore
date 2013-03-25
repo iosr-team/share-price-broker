@@ -5,4 +5,7 @@ target/
 .project
 .springBeans
 
+client/bin
+provider/bin
+
 *~
