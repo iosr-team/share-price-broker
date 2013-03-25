@@ -7,19 +7,31 @@
 
 Wymagania funkcjonalne
 
-  * prezentowanie aktualnych i archiwalnych notowań giełdowych akcji
+	aplikacja kliencka:
 
-  * możliwość wyboru spółek, których notowania mają być śledzone i prezentowane
-
-  * aplikacja kliencka z interfejsem webowym
+	  * prezentowanie aktualnych i archiwalnych notowań giełdowych akcji
+	
+	  * możliwość wyboru spółek, których notowania mają być śledzone i prezentowane
+	  
+	  * uwierzytelnianie użytkowników
+	  
+	  * zarządzanie kontami użytkowników przez administratora
+	
+	provider:
+	
+	  * konfigurowanie źródła danych aktualnych notowań giełdowych
+	  
+	  * konfigurowanie śledzonych spółek giełdowych
 
 
 Wymagania niefunkcjonalne
 
   * wdrożenie aplikacji w systemie chmurowym PaaS CloudFoundry
   
+  * luźne powiązanie aplikacji klienckiej i providera, komunikacja przez JMS
+  
   * obsługa wielu niezależnych tenantów 	
 
-  * zgdoność aplikacji webowej ze standardami internetowymi
+  * interfejs webowy aplikacji klienckiej, zgodny ze standardami internetowymi
   
 
