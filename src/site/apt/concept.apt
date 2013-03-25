@@ -1,5 +1,5 @@
  -----
- Munutki ze spotkań
+ Koncepcja rozwiązania i założenia projektowe
  -----
  Szymon Gut, Bartłomiej Puto
  -----
@@ -7,10 +7,6 @@
  -----
 
 Koncepcja rozwiązania / założenia projektowe
-
-* Tenancy strategies
-
-  * {{{https://docs.google.com/document/d/1KpBqcc-ZeEWv_kFMeVRJbiBfdZbmhsOvDrqOaOYFubk/edit?usp=sharing}Tenancy strategies - przegląd rozwiązań}}
 
 * Koncepcja rozwiązania
 
@@ -20,6 +16,9 @@ Koncepcja rozwiązania / założenia projektowe
 
   * {{{https://docs.google.com/document/d/1uhgGXd832x_0_HjysU5W9ZPNw6L3F8k6Fr1rbye2OFo/edit?usp=sharing}Technologie}}
 
+* Tenancy strategies
+
+  * {{{https://docs.google.com/document/d/1KpBqcc-ZeEWv_kFMeVRJbiBfdZbmhsOvDrqOaOYFubk/edit?usp=sharing}Tenancy strategies - przegląd rozwiązań}}
 
   
 

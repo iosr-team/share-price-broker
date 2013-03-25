@@ -9,11 +9,12 @@
 
     <menu name="Dokumentacja techniczna" >
 		
-      	<item name="Przypadki użycia" href="usecase.html" />
-      	<item name="Koncapcja rozwiązania / decyzje projektowe" href="concept.html" />
-      	<item name="Architektura" href="architecture.html" />
+      	<item name="Diagram przypadków użycia" href="usecase.html" />
+      	<item name="Specyfikacja wymagań" href="requirements.html" />
+      	<item name="Koncepcja rozwiązania i decyzje projektowe" href="concept.html" />
+<!--       	<item name="Architektura" href="architecture.html" /> -->
     </menu>
-    <menu name="Spotkania">
+    <menu name="Dokumentacja procesowa">
         <item name="Minutki" href="minutes.html">
         </item>
     </menu>
