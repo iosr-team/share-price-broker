@@ -6,6 +6,8 @@ target/
 .springBeans
 
 client/site
+client/bin
 provider/site
+provider/bin
 
 *~
