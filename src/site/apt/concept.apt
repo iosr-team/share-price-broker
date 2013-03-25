@@ -6,17 +6,75 @@
  10.03.2013
  -----
 
-Koncepcja rozwiązania / założenia projektowe
+Koncepcja rozwiązania
 
-* Koncepcja rozwiązania
+[images/ArchitectureOverview.jpg] Szkic architektury
 
-  * {{{https://docs.google.com/document/d/1s65gTWwX_vrUWUTiN7_ZVh56QEtbMgGeJEsrhDIwY1A/edit?usp=sharing}Koncepcja rozwiązania}}
+* Użytkownicy systemu
+	
+	    * administrator główny
+	
+	        * ma dostęp administracyjny do Cloud Foundry
+	
+	        * zarządza konfiguracją Providera
+	
+	        * dodaje administratorów dla poszczególnych tenantów (za pomocą interfejsu webowego)
+	
+	    * administrator (dla danego tenanta)
+	
+	        * ma dostęp do aplikacji poprzez interfejs webowy
+	
+	        * ma dostęp do panelu adminsitracyjnego aplikacji poprzez interfejs webowy
+	
+	        * decyduje o monitorowanych przez tenanta spółkach
+	
+	        * dodaje zwykłych użytkowników do systemu
+	
+	    * zwykły użytkownik
+	
+	        * ma dostęp do aplikacji poprzez interfejs webowy
+	
+	        * podczas tworzenia jest automatycznie przypisywany do określonego tenanta (na podstawie tenanta administratora, który dodaje użytkownika)
+	
+* Konfiguracja systemu
+	
+	    * opcje konfiguracji dla Providera zapisane w pliku
+	
+	    * konfiguracja klienta poprzez interfejs webowy
+	
+	    * opcje konfiguracji dla Klienta zapisane w odzielnej tabeli w bazie
+	
+* Zabezpieczenie aplikacji i modelowanie tenantów
+	
+	    * użytkownik, aby móc skorzystać z systemu, musi się zalogować, podając login i hasło
+	
+	    * podczas logowania z bazy jest “wyciągany” identyfikator TENANT-ID, który “krąży” w sesji podczas, gdy użytkownik jest zalogowany
+	
+	    * dane w bazie są współdzielone przez tenantów, a każdy wiersz posiada dodatkowo pole TENANT-ID w celu identyfikacji tenantów
+	
+	    * dostęp tenantów do odpowiednich dla nich danych jest realizowany na poziomie warstwy DAO (zapytania modyfikowane w taki sposób, aby zawierały TENANT-ID)
+	
+* Komunikacja Provider - Client
+	
+	    * model publish-subscribe
+	
+	    * Provider zawiera Publishera, który rozdziela kursy akcji, przyporządkowując je do odpowiednich tematów
+	
+	    * każdy tenant posiada Subscribera, który może nasłuchiwać na kilku tematach
   	
-* Technologie i narzędzia
+Technologie i narzędzia
 
-  * {{{https://docs.google.com/document/d/1uhgGXd832x_0_HjysU5W9ZPNw6L3F8k6Fr1rbye2OFo/edit?usp=sharing}Technologie}}
+    * komunikacja JMS: RabbitMQ
 
-* Tenancy strategies
+    * Spring MVC do budowy aplikacji klienta
+
+    * baza danych: MySQL lub vFabric Postgres
+
+    * persystencja: Hibernate
+    
+    * Spring Security - uwierzytelnianie użytkowników
+
+Strategie wielotenantowości
 
   * {{{https://docs.google.com/document/d/1KpBqcc-ZeEWv_kFMeVRJbiBfdZbmhsOvDrqOaOYFubk/edit?usp=sharing}Tenancy strategies - przegląd rozwiązań}}
 

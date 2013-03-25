@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<project name="Maven" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project name="Share Price Broker" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+  
+  <publishDate position="none"/>
+  
   <body>
     <links>
-      <item name="Maven" href="http://maven.apache.org/"/>
+      <item name="repozytorium kodu źródłowego" href="https://github.com/iosr-team/share-price-broker"/>
+      <item name="serwer ciągłej integracji" href="https://travis-ci.org/iosr-team/share-price-broker"/>
     </links>
 
     <menu name="Dokumentacja techniczna" >
@@ -12,17 +16,21 @@
       	<item name="Diagram przypadków użycia" href="usecase.html" />
       	<item name="Specyfikacja wymagań" href="requirements.html" />
       	<item name="Koncepcja rozwiązania i decyzje projektowe" href="concept.html" />
-<!--       	<item name="Architektura" href="architecture.html" /> -->
+		<!-- <item name="Architektura" href="architecture.html" /> -->
     </menu>
+    
     <menu name="Dokumentacja procesowa">
         <item name="Minutki" href="minutes.html">
         </item>
     </menu>
+    
     <menu ref="reports" inherit="bottom" />
   </body>
+  
   <skin>
     <groupId>org.apache.maven.skins</groupId>
     <artifactId>maven-fluido-skin</artifactId>
     <version>1.3.0</version>
   </skin>
+  
 </project>
