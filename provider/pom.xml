@@ -166,6 +166,7 @@
         		<configuration>
         		    <inputEncoding>UTF-8</inputEncoding> 
         		    <outputEncoding>UTF-8</outputEncoding> 
+        		    <outputDirectory>${project.basedir}/../site/${project.artifactId}</outputDirectory>
         		    <locales>pl</locales>
         		</configuration>
       		</plugin>
@@ -176,7 +177,7 @@
     <distributionManagement>
   		<site>
     		<id>gh-pages</id>
-    		<url>file:${project.basedir}/site</url>
+    		<url>file:${project.basedir}/../site/${project.artifactId}</url>
   		</site>
 	</distributionManagement>
     

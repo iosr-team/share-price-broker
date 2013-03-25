@@ -5,7 +5,4 @@ target/
 .project
 .springBeans
 
-client/site
-provider/site
-
 *~

@@ -93,7 +93,7 @@
         </plugins>
     </build>
     
-    <distributionManagement>
+     <distributionManagement>
   		<site>
     		<id>gh-pages</id>
     		<url>file:${project.basedir}/site</url>
