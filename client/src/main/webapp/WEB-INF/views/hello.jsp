@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>
-	Hello, I will be a JMS Client!  
+	Hello! 
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  Hello ${userName}! </P>
 </body>
 </html>
