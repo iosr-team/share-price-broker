@@ -1,0 +1,26 @@
+ -----
+ Diagramy klas
+ -----
+ Szymon Gut, Bartłomiej Puto
+ -----
+ 10.03.2013
+ -----
+
+Diagramy klas
+
+* Client
+
+[images/ClientClassDiagram.jpg] Diagram klas
+
+** Założenia
+
+	* na diagramie przedstawiono tylko najważniejsze elementy w celu zachowania klarowności rysunku, pominięto mało znaczące gettery i settery
+	
+	* Client jako aplikacja webowa
+	
+	* aplikacja realizowana w oparciu o wzorzec MVC (Spring)
+	
+	* odwołanie do bazy poprzez warstwę DAO, która wspomaga modelowanie wielotenantowości
+	
+	* dla większości klas modelu zostanie przygotowana odpowiadająca klasa DAO
+
