@@ -9,23 +9,24 @@ public class Role {
 
     @Id
     @GeneratedValue
-    private Long roleId;
+    private Long id;
 
-    private String roleName;
+    private String name;
 
-    public Long getRoleId() {
-        return roleId;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getRoleName() {
-        return roleName;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

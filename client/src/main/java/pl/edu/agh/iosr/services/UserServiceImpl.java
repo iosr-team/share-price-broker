@@ -3,6 +3,7 @@ package pl.edu.agh.iosr.services;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User getUserByUserName(String userName) {
         Query query = getEntityManager().createQuery("from User u where "
-                + "u.userName =:username");
+                + "u.login =:username");
         query.setParameter("username", userName);
         return  (query.getResultList() != null && query.getResultList().size() > 0)
                 ? (User) (query.getResultList().get(0)) : null;

@@ -3,6 +3,8 @@ package pl.edu.agh.iosr.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -10,76 +12,109 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 public class User {
 
-    @Id
-    @GeneratedValue
-    private Long userId;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    private String userName;
+	private String login;
+	
+	private String name;
 
-    private String password;
+	private String surname;
 
-    private String emailId;
+	private String password;
 
-    private boolean enabled;
+	private String email;
 
-    @OneToOne
-    private Role role;
+	private boolean enabled;
 
-    public Role getRole() {
-         return role;
-    }
+	@ManyToOne
+	@JoinColumn(name = "TENANT_ID")
+	private Tenant tenant;
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+	@OneToOne
+	@JoinColumn(name = "ROLE_ID")
+	private Role role;
 
-    public boolean isEnabled() {
-        return enabled;
-    }
+	public Tenant getTenant() {
+		return tenant;
+	}
 
-    public void setEnabled(boolean enabled) {
-       this.enabled = enabled;
-    }
+	public void setTenant(Tenant tenant) {
+		this.tenant = tenant;
+	}
 
-    public Long getUserId() {
-        return userId;
-    }
+	public Role getRole() {
+		return role;
+	}
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public void setRole(Role role) {
+		this.role = role;
+	}
 
-    public String getUserName() {
-        return userName;
-    }
+	public boolean isEnabled() {
+		return enabled;
+	}
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getEmailId() {
-        return emailId;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public User() {
+	public String getLogin() {
+		return login;
+	}
 
-    }
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-    public User(String userName, String password, String mailId) {
-        this.userName = userName;
-        this.password = password;
-        this.emailId = mailId;
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public User() {
+
+	}
+
+	public User(String login, String password, String email) {
+		this.login = login;
+		this.password = password;
+		this.email = email;
+	}
 }
