@@ -1,4 +1,4 @@
-package pl.edu.agh.iosr.model;
+package pl.edu.agh.iosr.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,5 +28,8 @@ public class Role {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	public String toString(){
+		return this.name;
+	}
 }

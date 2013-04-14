@@ -1,8 +1,8 @@
 package pl.edu.agh.iosr.services;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import pl.edu.agh.iosr.model.entity.UserEntity;
 
 /**
  * 
@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
  * TODO: remove it later.
  */
 @Service
-public class HelloService {
+public class HelloService extends TenantResolver {
 
 	public String getHelloName(){
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String name = auth.getName(); //get logged in username
-	    return name.toUpperCase();
+	    UserEntity user = this.resolveUser();
+	    return "User "+user.getLogin()+" ["+user.getTenant().getName()+"]";
 	}
 	
 }

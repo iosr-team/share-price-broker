@@ -1,4 +1,4 @@
-package pl.edu.agh.iosr.model;
+package pl.edu.agh.iosr.model.entity;
 
 import java.util.List;
 
@@ -58,5 +58,9 @@ public class Tenant {
 
 	public void setObservedStockIndicies(List<StockIndex> observedStockIndicies) {
 		this.observedStockIndicies = observedStockIndicies;
+	}
+	
+	public String toString(){
+		return this.getDescription();
 	}
 }

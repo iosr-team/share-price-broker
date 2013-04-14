@@ -1,4 +1,4 @@
-package pl.edu.agh.iosr.model;
+package pl.edu.agh.iosr.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+public class UserEntity {
 
 	@Id
 	@GeneratedValue
@@ -108,11 +108,11 @@ public class User {
 		this.email = email;
 	}
 	
-	public User() {
+	public UserEntity() {
 
 	}
 
-	public User(String login, String password, String email) {
+	public UserEntity(String login, String password, String email) {
 		this.login = login;
 		this.password = password;
 		this.email = email;

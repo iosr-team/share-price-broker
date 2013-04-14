@@ -1,4 +1,4 @@
-package pl.edu.agh.iosr.model;
+package pl.edu.agh.iosr.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

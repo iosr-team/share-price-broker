@@ -18,7 +18,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import pl.edu.agh.iosr.controllers.LoginController;
-import pl.edu.agh.iosr.model.User;
+import pl.edu.agh.iosr.model.entity.UserEntity;
 import pl.edu.agh.iosr.services.UserServiceImpl;
 
 
@@ -26,7 +26,7 @@ import pl.edu.agh.iosr.services.UserServiceImpl;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackageClasses = {UserServiceImpl.class,
-        LoginController.class, User.class })
+        LoginController.class, UserEntity.class })
 @ImportResource("/WEB-INF/spring-security.xml")
 public class ComponentConfig {
 
@@ -39,7 +39,7 @@ public class ComponentConfig {
         emfb.setDataSource(dataSourceConfiguration.dataSource());
         emfb.setJpaPropertyMap(jpaPropertyMap());
         emfb.setJpaDialect(new HibernateJpaDialect());
-        emfb.setPackagesToScan(new String[]{User.class.getPackage().getName()});
+        emfb.setPackagesToScan(new String[]{UserEntity.class.getPackage().getName()});
         return emfb;
     }
 

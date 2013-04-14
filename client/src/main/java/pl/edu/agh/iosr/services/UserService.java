@@ -1,10 +1,10 @@
 package pl.edu.agh.iosr.services;
 
-import pl.edu.agh.iosr.model.User;
+import pl.edu.agh.iosr.model.entity.UserEntity;
 
 public interface UserService {
-    User getUserById(Long id);
-    User getUserByUserName(String userName);
-    User createUser(User user);
+    UserEntity getUserById(Long id);
+    UserEntity getUserByLogin(String userName);
+    UserEntity createUser(UserEntity user);
 }
 

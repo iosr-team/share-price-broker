@@ -11,16 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.edu.agh.iosr.services.HelloService;
 
 @Controller
-public class HelloController {
-	private final Logger logger = LoggerFactory
-			.getLogger(HelloController.class);
+public class HomeController {
+	private final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
 	private HelloService helloService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getExpenses(ModelMap model) {
-		model.addAttribute("userName", helloService.getHelloName());
-		return "hello";
+		model.addAttribute("user", helloService.resolveUser());
+		return "home";
 	}
 }

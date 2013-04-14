@@ -1,0 +1,1 @@
+mvn clean package && cd client\target && vmc push iosr-client && cd ..\..\
