@@ -22,10 +22,21 @@
 	<sec:authorize access="isAuthenticated()">
 		<ul class="nav-a">
 
-			<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_SUPERUSER">
+			<sec:authorize ifAnyGranted="ROLE_ADMIN">
 				<li><a class=""
 					href="${pageContext.request.contextPath}/signup">
 					<span>User Management</span></a>
+				</li>
+			</sec:authorize>
+			
+			<sec:authorize ifAnyGranted="ROLE_SUPERUSER">
+				<li><a class=""
+					href="${pageContext.request.contextPath}/administrator/list">
+					<span>Administrators</span></a>
+				</li>
+				<li><a class=""
+					href="${pageContext.request.contextPath}/tenant/list">
+					<span>Tenants</span></a>
 				</li>
 			</sec:authorize>
 

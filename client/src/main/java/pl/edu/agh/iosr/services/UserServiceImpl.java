@@ -61,4 +61,17 @@ public class UserServiceImpl implements UserService {
         getEntityManager().persist(user);
         return user;
     }
+
+	@Override
+	public List<UserEntity> getAllUsersOfRole(String roleName) {
+
+		Query query = getEntityManager().createQuery(
+        		"from UserEntity u where u.role.name = :roleName");
+        query.setParameter("roleName", roleName);
+		
+        @SuppressWarnings("unchecked")
+		List<UserEntity> resultList = query.getResultList();
+        
+        return  resultList;
+	}
 }

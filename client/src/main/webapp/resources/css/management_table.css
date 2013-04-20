@@ -1,0 +1,52 @@
+.managementTable{
+	width: 100%;
+	border: 1px solid #7585BE !important;
+}
+.managementTable th{
+	height: 30px;
+	background-color: #59b0cf;
+	color: white;
+	font-weight: bold;
+	padding-top: 5px;
+	border-bottom: 1px solid #7585BE;
+	border-right: 1px solid #7585BE;
+}
+
+.managementTable th.tableTitle{
+	text-align: left;
+	padding-left: 5px;
+	background-color: #59b0cf;
+	font-size: 20px;
+	color: white;
+}
+
+.managementTable tr:nth-child(even){
+	background-color: #D6DBDD;
+}
+
+.managementTable tr:nth-child(odd){
+	background-color: #F4F4F4;
+}
+
+.managementTable tr.highlight{
+	background-color: #ACDCEF !important;
+}
+
+.managementTable td{
+	height: 30px;
+	border-right: 1px solid #7585BE;
+	padding-left: 5px;
+	border-bottom: 1px solid #7585BE;
+	padding-top: 5px;
+	font-size:14px;
+}
+
+.managementTable td a{
+	text-decoration: underline;
+}
+
+.managementTable th.controlColumn, .managementTable td.controlColumn{
+	width: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+}

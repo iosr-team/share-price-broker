@@ -30,8 +30,7 @@
 				<div class="errorblock">
 					${errorMsg}
 				</div>
-			<form action="<c:url value='j_spring_security_check' />"
-				method='POST'>
+			<form action="<c:url value='j_spring_security_check' />" method='POST'>
 				<div>
 					<label>Username</label> <input class="textbox-a" id="username"
 						name="j_username" placeholder="UserName" type="text"

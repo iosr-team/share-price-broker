@@ -65,7 +65,7 @@ body {
 }
 
 #contentWrapper {
-	width: 960px;
+	width: auto;
 	margin: 0 auto;
 	background: #fff;
 	min-height: 650px;

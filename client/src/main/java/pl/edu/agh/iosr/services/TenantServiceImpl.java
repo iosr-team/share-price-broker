@@ -43,4 +43,9 @@ public class TenantServiceImpl implements TenantService {
         List<Tenant> tenantList = (List<Tenant>)query.getResultList() ;
         return  (tenantList!= null && tenantList.size() > 0) ? (Tenant) (tenantList.get(0)) : null;
     }
+
+	@Override
+	public Tenant getTenantById(Long id) {
+		return getEntityManager().find(Tenant.class, id);
+	}
 }
