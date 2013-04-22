@@ -3,9 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xmlns:cloud="http://schema.cloudfoundry.org/spring"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd
+		http://schema.cloudfoundry.org/spring http://schema.cloudfoundry.org/spring/cloudfoundry-spring-0.7.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -24,5 +28,30 @@
 	<context:component-scan base-package="pl.edu.agh.iosr" />
 	
 	
+	
+	<!-- RabbitMQ -->
+	
+	<!-- Obtain a connection to the RabbitMQ via cloudfoundry-runtime: -->
+	<cloud:rabbit-connection-factory id="connectionFactory"/>
+	
+	<!-- Set up the AmqpTemplate/RabbitTemplate: -->
+	<rabbit:template exchange="stock-broker" connection-factory="connectionFactory"/>
+	
+	<!-- Request that queues, exchanges and bindings be automatically
+	     declared on the broker: -->
+	<rabbit:admin connection-factory="connectionFactory" />
+	
+	
+	<rabbit:queue name="ABC"/>
+	<rabbit:queue name="KJU"/>
+	<rabbit:queue name="BLA"/>
+	
+	<rabbit:direct-exchange name="stock-broker">
+		<rabbit:bindings>
+			<rabbit:binding queue="ABC" key="abc"/>
+			<rabbit:binding queue="KJU" key="kju"/>
+			<rabbit:binding queue="BLA" key="kju"/>
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
 	
 </beans:beans>
