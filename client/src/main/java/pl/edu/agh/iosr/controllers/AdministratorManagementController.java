@@ -21,9 +21,7 @@ public class AdministratorManagementController {
 	
 	@Autowired
 	private UserService userService;
-	
-	
-	
+
 	@RequestMapping(value = "/administrator/list", method = RequestMethod.GET)
 	public String list(ModelMap model){
 		

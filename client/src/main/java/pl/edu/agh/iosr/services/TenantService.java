@@ -8,5 +8,6 @@ public interface TenantService {
     List<Tenant> getAllTenants();
     Tenant getTenantByName(String name);
     Tenant getTenantById(Long id);
+    Tenant createTenant(Tenant tenant);
 }
 

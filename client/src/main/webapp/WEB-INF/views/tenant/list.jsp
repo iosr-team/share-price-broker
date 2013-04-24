@@ -7,6 +7,7 @@
 		
 		<!-- management table -->
 		<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/management_table.css" />" />
+		<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/buttons.css" />" />
 		<script src="<c:url value="${pageContext.request.contextPath}/resources/javascript/managementTable.js" />" ></script>
 		
 		<title>Home</title>
@@ -27,7 +28,10 @@
 	        		<tr>
 		        		<th class="tableTitle" colspan="3">
 		        			Tenant Management
-		        			<div class="tableButtons"></div>
+		        			<div class="tableButtons">
+								<a href="${pageContext.request.contextPath}/tenant/add" class="actionButton">add</a>
+								<a href="${pageContext.request.contextPath}/tenant/remove/${ tenant.id }" class="removeButton">remove</a>
+							</div>
 		        		</th>
 		        	</tr>
 		        	<tr>
@@ -36,6 +40,8 @@
 		        		<th>Description</th>
 		        	</tr>
 	        	</thead>
+	        		
+	        	<tbody>
 	        		<c:forEach var="tenant" items="${ tenantList }">
 	        			<tr>
 		        			<td class="controlColumn"><input type="checkbox" class="itemCheckbox" id="item_${ tenant.id }" /></td>
@@ -47,9 +53,12 @@
 		        			</td>
 		        		</tr>
 	        		</c:forEach>
-	        	<tbody>
-	        	<tbody>
+	        	</tbody>
 	        </table>
+	        <div class="buttonWrapper">
+				<a href="${pageContext.request.contextPath}/tenant/add" class="actionButton">add</a>
+				<a href="${pageContext.request.contextPath}/tenant/remove/${ tenant.id }" class="removeButton">remove</a>
+			</div>
 	    </form>
     </jsp:body>
     

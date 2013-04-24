@@ -48,4 +48,11 @@ public class TenantServiceImpl implements TenantService {
 	public Tenant getTenantById(Long id) {
 		return getEntityManager().find(Tenant.class, id);
 	}
+	
+	@Override
+    @Transactional
+    public Tenant createTenant(Tenant tenant) {
+        getEntityManager().persist(tenant);
+        return tenant;
+    }
 }

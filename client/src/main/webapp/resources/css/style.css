@@ -502,21 +502,21 @@ button:hover {
 	margin-left: 45px;
 }
 
-.signing-form {
+.common-form {
 	position: relative;
 	top: 20px;
 	width: 280px;
 	margin: 0 auto;
 }
 
-.signing-form h2 {
+.common-form h2 {
 	color: rgb(109, 98, 98);
 	font-size: 18px;
 	font-style: italic;
 	margin-bottom: 10px;
 }
 
-.signing-form label {
+.common-form label {
 	position: absolute;
 	margin-top: -10px;
 	font-size: 15px;
@@ -524,24 +524,24 @@ button:hover {
 	font-weight: bold;
 }
 
-.signing-form input {
+.common-form input {
 	width: 200px;
 	margin-left: 0px;
 	padding: 9px;
 }
 
-.signing-form select {
+.common-form select {
 	width: 200px;
 	margin-left: 0px;
 	padding: 9px;
 	margin-top:9px;
 }
 
-.signing-form div {
+.common-form div {
 	margin-top: 15px;
 }
 
-.signing-form .btn-a {
+.common-form .btn-a {
 	width: 100px;
 	margin-top: -10px;
 }

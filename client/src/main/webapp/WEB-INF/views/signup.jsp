@@ -61,7 +61,7 @@
 	            ${param.errorMsg}
 	        </div>
 	    </c:if>
-	    <div class="signing-form">
+	    <div class="common-form">
 	     <form action="${pageContext.request.contextPath}/signup" class="new_user" method="post" id="signupForm">
 	         <div>
 	              <label>Login</label>

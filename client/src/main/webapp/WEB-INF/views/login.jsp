@@ -16,7 +16,7 @@
     </jsp:attribute>
     
     <jsp:body>
-        <div class="signing-form">
+        <div class="common-form">
 			<c:if test="${not empty error}">
 				<div class="errorblock">
 					Your login attempt was not successful, try again.<br /> 
