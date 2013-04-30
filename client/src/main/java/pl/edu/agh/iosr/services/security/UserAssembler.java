@@ -24,7 +24,7 @@ public class UserAssembler{
 		
 	    String username = userEntity.getLogin();
 	    String password = userEntity.getPassword();
-	    boolean enabled = userEntity.isEnabled();
+	    boolean enabled = userEntity.isEnabled() && userEntity.getTenant().isEnabled(); // user and tenant have to be enabled
 	    boolean accountNonExpired = userEntity.isEnabled();
 	    boolean credentialsNonExpired = userEntity.isEnabled();
 	    boolean accountNonLocked = userEntity.isEnabled();

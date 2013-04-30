@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/buttons.css" />" />
 		<script src="<c:url value="${pageContext.request.contextPath}/resources/javascript/managementTable.js" />" ></script>
 		
-		<title>Home</title>
+		<title>Tenant list</title>
 	</jsp:attribute>
 	
 	<jsp:attribute name="topContent">
@@ -22,15 +22,15 @@
     </jsp:attribute>
     
     <jsp:body>
-    	<form action="<c:url value='j_spring_security_check' />" method='POST'>
-	        <table class="managementTable">
+    	<form id="tenantForm" action="<c:url value="${pageContext.request.contextPath}/tenant/remove" />" method='POST'>
+	        <table class="managementTable" id="tenantTable">
 	        	<thead>
 	        		<tr>
-		        		<th class="tableTitle" colspan="3">
+		        		<th class="tableTitle" colspan="4">
 		        			Tenant Management
 		        			<div class="tableButtons">
 								<a href="${pageContext.request.contextPath}/tenant/add" class="actionButton">add</a>
-								<a href="${pageContext.request.contextPath}/tenant/remove/${ tenant.id }" class="removeButton">remove</a>
+								<a href="#" class="removeButton">remove</a>
 							</div>
 		        		</th>
 		        	</tr>
@@ -38,26 +38,30 @@
 		        		<th class="controlColumn"><input type="checkbox" class="itemCheckboxParent" /></th>
 		        		<th>Name</th>
 		        		<th>Description</th>
+                        <th>Enabled</th>
 		        	</tr>
 	        	</thead>
 	        		
 	        	<tbody>
 	        		<c:forEach var="tenant" items="${ tenantList }">
 	        			<tr>
-		        			<td class="controlColumn"><input type="checkbox" class="itemCheckbox" id="item_${ tenant.id }" /></td>
+		        			<td class="controlColumn"><input name="itemIds" value = "${ tenant.id }" type="checkbox" class="itemCheckbox" id="item_${ tenant.id }" /></td>
 		        			<td>
 		        				<a class="" href="${pageContext.request.contextPath}/tenant/edit/${ tenant.id }">${ tenant.name }</a>
 							</td>
 							<td>
 		        				<a class="" href="${pageContext.request.contextPath}/tenant/edit/${ tenant.id }">${ tenant.description }</a>
 		        			</td>
+                            <td>
+                                <a class="" href="${pageContext.request.contextPath}/tenant/edit/${ tenant.id }">${ tenant.enabled }</a>
+                            </td>
 		        		</tr>
 	        		</c:forEach>
 	        	</tbody>
 	        </table>
 	        <div class="buttonWrapper">
 				<a href="${pageContext.request.contextPath}/tenant/add" class="actionButton">add</a>
-				<a href="${pageContext.request.contextPath}/tenant/remove/${ tenant.id }" class="removeButton">remove</a>
+				<a href="#" class="removeButton">remove</a>
 			</div>
 	    </form>
     </jsp:body>

@@ -34,6 +34,15 @@ public class TenantServiceImpl implements TenantService {
         return  (tenantList != null && tenantList.size() > 0) ?  tenantList : null;
     }
 
+    @Override
+    @Transactional
+    public List<Tenant> getAllNotSuperuserTenants() {
+        Query query = getEntityManager().createQuery("from Tenant t where t.name != :name");
+        query.setParameter("name", Tenant.SUPERUSER_TENANT_NAME);
+        List<Tenant> tenantList = (List<Tenant>) query.getResultList();
+        return  (tenantList != null && tenantList.size() > 0) ?  tenantList : null;
+    }
+
 	@Override
     @Transactional
     public Tenant getTenantByName(String name) {
@@ -54,5 +63,17 @@ public class TenantServiceImpl implements TenantService {
     public Tenant createTenant(Tenant tenant) {
         getEntityManager().persist(tenant);
         return tenant;
+    }
+
+    @Override
+    @Transactional
+    public void removeTenantById(Long id){
+        getEntityManager().remove(getTenantById(id));
+    }
+
+    @Override
+    @Transactional
+    public Tenant merge(Tenant tenant){
+        return getEntityManager().merge(tenant);
     }
 }

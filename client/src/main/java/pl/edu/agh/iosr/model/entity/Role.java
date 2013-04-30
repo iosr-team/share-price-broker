@@ -6,6 +6,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Role {
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
+    public static final String ROLE_SUPERUSER = "ROLE_SUPERUSER";
+    public static final String ROLE_USER = "ROLE_USER";
 
     @Id
     @GeneratedValue
@@ -32,4 +35,12 @@ public class Role {
 	public String toString(){
 		return this.name;
 	}
+
+    public boolean isAdmin(){
+        return ROLE_ADMIN.equals(this.name);
+    }
+
+    public boolean isSuperuser(){
+        return ROLE_SUPERUSER.equals((this.name));
+    }
 }

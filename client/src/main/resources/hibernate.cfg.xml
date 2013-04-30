@@ -6,7 +6,10 @@
  
 <hibernate-configuration>
     <session-factory>
-        <mapping class="pl.edu.agh.iosr.model.User" />
-        <mapping class="pl.edu.agh.iosr.model.Role" />
+        <mapping class="pl.edu.agh.iosr.model.entity.UserEntity" />
+        <mapping class="pl.edu.agh.iosr.model.entity.Tenant" />
+        <mapping class="pl.edu.agh.iosr.model.entity.Role" />
+        <mapping class="pl.edu.agh.iosr.model.entity.ExchangeQuotation" />
+        <mapping class="pl.edu.agh.iosr.model.entity.StockIndex" />
     </session-factory>   
 </hibernate-configuration>

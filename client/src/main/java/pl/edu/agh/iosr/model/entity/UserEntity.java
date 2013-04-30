@@ -26,7 +26,7 @@ public class UserEntity {
 
 	private String email;
 
-	private boolean enabled;
+	private Boolean enabled;
 
 	@ManyToOne
 	@JoinColumn(name = "TENANT_ID")
@@ -52,11 +52,15 @@ public class UserEntity {
 		this.role = role;
 	}
 
-	public boolean isEnabled() {
+	public Boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(boolean enabled) {
+    public Boolean isEnabled() {
+        return enabled;
+    }
+
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 

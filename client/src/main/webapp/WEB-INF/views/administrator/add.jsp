@@ -30,7 +30,7 @@
                               email: true
                           },
                           name: "required",
-                          surname: "required"
+                          surname: "required",
                       },
                       messages: {
                           login: "Please enter user login",
@@ -63,8 +63,7 @@
             </div>
         </c:if>
         <div class="common-form">
-
-            <form:form modelAttribute="userCommand" action="${pageContext.request.contextPath}/administrator/edit/${ userCommand.id }" class="new_user" method="POST" id="editAdministratorForm">
+            <form:form modelAttribute="userCommand" action="${pageContext.request.contextPath}/administrator/add" class="new_user" method="POST" id="addAdministratorForm">
                 <div>
                     <label>Login</label>
                     <form:hidden path="id" />
@@ -88,19 +87,11 @@
                 </div>
                 <div>
                     <label>Tenant</label>
-                    <form:select path="tenantName" id="tenantName" items="${ userCommand.tenantMap}" />
+                    <form:select path = "tenantName" id="tenantName" items="${ userCommand.tenantMap}" />
                 </div>
 
                 <div>
-                    <label>Enabled</label>
-                    <form:select path="enabled" id="enabled" >
-                        <form:option value="true" label="Yes" />
-                        <form:option value="false" label="No" />
-                    </form:select>
-                </div>
-
-                <div>
-                    <input class="btn-a" name="commit" type="submit" value="Update">
+                    <input class="btn-a" name="commit" type="submit" value="Add">
                 </div>
             </form:form>
         </div>

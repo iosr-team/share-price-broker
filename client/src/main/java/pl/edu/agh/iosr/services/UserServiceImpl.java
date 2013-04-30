@@ -74,4 +74,16 @@ public class UserServiceImpl implements UserService {
         
         return  resultList;
 	}
+
+    @Override
+    @Transactional
+    public void removeUserById(Long id){
+        getEntityManager().remove(getUserById(id));
+    }
+
+    @Override
+    @Transactional
+    public UserEntity merge(UserEntity user) {
+        return getEntityManager().merge(user);
+    }
 }

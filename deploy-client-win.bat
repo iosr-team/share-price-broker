@@ -1,1 +1,1 @@
-mvn clean package && cd client\target && vmc push iosr-client && cd ..\..\
+mvn clean package -Dmaven.test.skip=true && cd client\target && vmc push iosr_client && cd ..\..\

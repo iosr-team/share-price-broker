@@ -25,8 +25,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   	public UserDetails loadUserByUsername(String username)
   			throws UsernameNotFoundException, DataAccessException {
   		log.debug("login = "+username);
-  		
-  		UserDetails userDetails = null;
 
   		UserEntity userEntity = userService.getUserByLogin(username);
 

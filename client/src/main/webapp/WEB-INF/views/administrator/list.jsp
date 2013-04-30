@@ -7,9 +7,10 @@
 		
 		<!-- management table -->
 		<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/management_table.css" />" />
+		<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/buttons.css" />" />
 		<script src="<c:url value="${pageContext.request.contextPath}/resources/javascript/managementTable.js" />" ></script>
 		
-		<title>Home</title>
+		<title>Administrator list</title>
 	</jsp:attribute>
 	
 	<jsp:attribute name="topContent">
@@ -21,13 +22,16 @@
     </jsp:attribute>
     
     <jsp:body>
-    	<form action="<c:url value='j_spring_security_check' />" method='POST'>
-	        <table class="managementTable">
+    	<form id="administratorForm" action="<c:url value="${pageContext.request.contextPath}/administrator/remove" />" method='POST'>
+	        <table class="managementTable" id="administratorTable">
 	        	<thead>
 	        		<tr>
 		        		<th class="tableTitle" colspan="7">
-		        			Tenant Management
-		        			<div class="tableButtons"></div>
+		        			Administrator Management
+                            <div class="tableButtons">
+                                <a href="${pageContext.request.contextPath}/administrator/add" class="actionButton">add</a>
+                                <a href="#" class="removeButton">remove</a>
+                            </div>
 		        		</th>
 		        	</tr>
 		        	<tr>
@@ -40,15 +44,17 @@
 		        		<th>Enabled</th>
 		        	</tr>
 	        	</thead>
+
+                <tbody>
 	        		<c:forEach var="administrator" items="${ administratorList }">
 
 	        			<tr>
-		        			<td class="controlColumn"><input type="checkbox" class="itemCheckbox" id="item_${ administrator.id }" /></td>
+		        			<td class="controlColumn"><input name="itemIds" value = "${ administrator.id }" type="checkbox" class="itemCheckbox" id="item_${ administrator.id }" /></td>
 		        			<td>
 		        				<a class="" href="${pageContext.request.contextPath}/administrator/edit/${ administrator.id }">${ administrator.login }</a>
 							</td>
 							<td>
-		        				<a class="" href="${pageContext.request.contextPath}/administrator/edit/${ administrator.id }">${ administrator.tenant }</a>
+		        				<a class="" href="${pageContext.request.contextPath}/administrator/edit/${ administrator.id }">${ administrator.tenant.description }</a>
 							</td>
 							<td>
 		        				<a class="" href="${pageContext.request.contextPath}/administrator/edit/${ administrator.id }">${ administrator.name }</a>
@@ -65,9 +71,13 @@
 							
 		        		</tr> 
 	        		</c:forEach>
-	        	<tbody>
+
 	        	<tbody>
 	        </table>
+            <div class="buttonWrapper">
+                <a href="${pageContext.request.contextPath}/administrator/add" class="actionButton">add</a>
+                <a href="#" class="removeButton">remove</a>
+            </div>
 	    </form>
     </jsp:body>
     

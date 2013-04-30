@@ -63,7 +63,7 @@ public class LoginController{
     		@RequestParam("surname")String surname,
     		@RequestParam("tenant")String tenantName,
     		@RequestParam("role")String roleName) {
-    	//TODO: use command object instead of requestParam ???
+    	//TODO: use command object and @ModelAttribute instead of @RequestParam
     	
         UserEntity user = userService.getUserByLogin(userName);
         if (user == null) {

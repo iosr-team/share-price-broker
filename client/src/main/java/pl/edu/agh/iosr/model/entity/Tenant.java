@@ -13,6 +13,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "TENANT")
 public class Tenant {
+    public static final String SUPERUSER_TENANT_NAME = "SUPERUSER_TENANT";
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -20,6 +22,8 @@ public class Tenant {
 	private String name;
 
 	private String description;
+
+    private Boolean enabled;
 
 	@ManyToMany
 	@JoinTable(
@@ -63,4 +67,20 @@ public class Tenant {
 	public String toString(){
 		return this.getDescription();
 	}
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public Boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isSuperuser(){
+        return SUPERUSER_TENANT_NAME.equals(this.name);
+    }
 }
