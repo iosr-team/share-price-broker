@@ -24,7 +24,7 @@
 
 			<sec:authorize ifAnyGranted="ROLE_ADMIN">
 				<li><a class=""
-					href="${pageContext.request.contextPath}/signup">
+					href="${pageContext.request.contextPath}/user/list">
 					<span>User Management</span></a>
 				</li>
 			</sec:authorize>

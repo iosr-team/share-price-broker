@@ -3,6 +3,7 @@ package pl.edu.agh.iosr.services.security;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,8 +19,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	private final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 	
-	@Autowired private UserService userService;
-	@Autowired private UserAssembler userAssembler;
+	@Autowired
+    @Qualifier("userService")
+    private UserService userService;
+
+	@Autowired
+    private UserAssembler userAssembler;
 
   	@Transactional(readOnly = true)
   	public UserDetails loadUserByUsername(String username)

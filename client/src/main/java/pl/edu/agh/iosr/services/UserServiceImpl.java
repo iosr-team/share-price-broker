@@ -11,14 +11,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pl.edu.agh.iosr.model.entity.Tenant;
 import pl.edu.agh.iosr.model.entity.UserEntity;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 	
 	private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 	
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     public EntityManager getEntityManager() {
         return entityManager;
@@ -74,6 +75,13 @@ public class UserServiceImpl implements UserService {
         
         return  resultList;
 	}
+
+    @Override
+    public List<UserEntity> getAllUsers() {
+        Query query = getEntityManager().createQuery("from UserEntity u");
+        List<UserEntity> userList = (List<UserEntity>) query.getResultList();
+        return  (userList != null && userList.size() > 0) ?  userList : null;
+    }
 
     @Override
     @Transactional

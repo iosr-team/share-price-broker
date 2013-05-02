@@ -1,6 +1,15 @@
 .managementTable{
 	width: 100%;
 	border: 1px solid #7585BE !important;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius:4px;
+
+    -webkit-box-shadow: 3px 3px 8px 1px #CCCCCC;
+    -moz-box-shadow: 3px 3px 8px 1px #CCCCCC;
+    box-shadow:#CCCCCC 3px 3px 8px 1px;
+
 }
 .managementTable th{
 	height: 30px;

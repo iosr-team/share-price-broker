@@ -12,4 +12,8 @@ insert into tenant(id,name,enabled,description) values(nextval('hibernate_sequen
 
 -- init users ---------------------------------------------------------------
 insert into users(id,email,enabled,login, password, name, surname, role_id, tenant_id) values(nextval('hibernate_sequence'),'bartek.unknown@gmail.com',true, 'superuser', 'superuser', 'Jan', 'Kowalski',(select id from role where name = 'ROLE_SUPERUSER'), (select id from tenant where name = 'SUPERUSER_TENANT'));
+
 insert into users(id,email,enabled,login, password, name, surname, role_id, tenant_id) values(nextval('hibernate_sequence'),'ala@example.com',true, 'ala', '123', 'Ala', 'Nowak',(select id from role where name = 'ROLE_ADMIN'), (select id from tenant where name = 'AGH'));
+insert into users(id,email,enabled,login, password, name, surname, role_id, tenant_id) values(nextval('hibernate_sequence'),'ola@example.com',true, 'ola', '123', 'Ola', 'Kowalska',(select id from role where name = 'ROLE_USER'), (select id from tenant where name = 'AGH'));
+
+insert into users(id,email,enabled,login, password, name, surname, role_id, tenant_id) values(nextval('hibernate_sequence'),'marcin@example.com',true, 'marcin', '123', 'Marcin', 'Wrog',(select id from role where name = 'ROLE_ADMIN'), (select id from tenant where name = 'UJ'));

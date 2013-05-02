@@ -16,7 +16,9 @@
     </jsp:attribute>
     
     <jsp:body>
-        <h1>Welcome home!</h1>
+        <div id="tenantWelcomeBox">
+            ${ user.tenant.description }
+        </div>
     </jsp:body>
     
 </t:genericpage>

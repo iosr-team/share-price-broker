@@ -788,3 +788,16 @@ div.tabContainer.active {
 	color:#4B75B3;
 	padding-top:10px;
 }
+
+#tenantWelcomeBox{
+    color:#A2D2FF;
+    font-size:42px;
+    font-weight:bold;
+    left:50%;
+    margin-left:-350px;
+    position:absolute;
+    text-align:center;
+    text-shadow:#BADDFF 1px 5px 8px;
+    top:50%;
+    width:700px;
+}

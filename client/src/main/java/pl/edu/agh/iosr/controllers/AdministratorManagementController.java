@@ -81,9 +81,9 @@ public class AdministratorManagementController extends AbstractUserController{
             }
         }
         if(errorMsg.equals("")){
-            return "redirect:/tenant/list";
+            return "redirect:/administrator/list";
         }
-        return "redirect:/tenant/list?errorMsg="+errorMsg;
+        return "redirect:/administrator/list?errorMsg="+errorMsg;
     }
 
     @RequestMapping(value = "/administrator/edit/{id}", method = RequestMethod.GET)

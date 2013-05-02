@@ -9,6 +9,7 @@ public interface UserService {
     UserEntity getUserByLogin(String userName);
     UserEntity createUser(UserEntity user);
     List<UserEntity> getAllUsersOfRole(String roleName);
+    List<UserEntity> getAllUsers();
     void removeUserById(Long id);
     UserEntity merge(UserEntity tenant);
 }

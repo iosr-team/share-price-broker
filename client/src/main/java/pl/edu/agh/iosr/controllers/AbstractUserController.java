@@ -3,10 +3,12 @@ package pl.edu.agh.iosr.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import pl.edu.agh.iosr.model.entity.Role;
 import pl.edu.agh.iosr.model.entity.Tenant;
 import pl.edu.agh.iosr.model.entity.UserEntity;
 import pl.edu.agh.iosr.services.RoleService;
+import pl.edu.agh.iosr.services.TenantResolverService;
 import pl.edu.agh.iosr.services.TenantService;
 import pl.edu.agh.iosr.model.command.UserCommand;
 import pl.edu.agh.iosr.services.UserService;
@@ -25,7 +27,11 @@ public abstract class AbstractUserController {
     protected RoleService roleService;
 
     @Autowired
+    @Qualifier("userServiceWithTenant")
     protected UserService userService;
+
+    @Autowired
+    protected TenantResolverService tenantResolverService;
 
     protected UserCommand prepareUserCommand(UserEntity user, String tenantName, String roleName, Map<String,String> tenantMap, Map<String,String> roleMap){
         UserCommand userCommand = new UserCommand();
