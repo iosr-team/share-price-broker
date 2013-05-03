@@ -20,7 +20,14 @@
 		<org.hibernate-version>4.1.9.Final</org.hibernate-version>
 	</properties>
 	<dependencies>
-	    
+
+        <!-- RabbitMQ -->
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>1.0.0.RC2</version>
+        </dependency>
+
 	    <!-- POSTGRE SQL -->
 	    <dependency>
             <groupId>commons-dbcp</groupId>

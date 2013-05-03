@@ -212,8 +212,20 @@ body {
 	margin-right: 10px
 }
 .logo img{
-	width: 600px;
-	height: 130px;
+	width: 150px;
+	height: 160px;
+}
+
+.logo .logoTitle {
+    color:#4B75B3;
+    font-size:60px;
+    font-style:italic;
+    font-weight:bold;
+    left:170px;
+    position:absolute;
+    text-shadow:#4B75B3 1px 5px 8px;
+    top:60px;
+    width:500px;
 }
 
 .nav-a {

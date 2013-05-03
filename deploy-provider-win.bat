@@ -1,0 +1,1 @@
+mvn clean package -Dmaven.test.skip=true && cd provider\target && vmc push iosr_provider && cd ..\..\

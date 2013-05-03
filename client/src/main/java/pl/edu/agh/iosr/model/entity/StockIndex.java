@@ -14,13 +14,21 @@ public class StockIndex {
 
 	private String name;
 
-	private String topicName;
+    private String description;
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -30,14 +38,6 @@ public class StockIndex {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getTopicName() {
-		return topicName;
-	}
-
-	public void setTopicName(String topicName) {
-		this.topicName = topicName;
 	}
 	
 	

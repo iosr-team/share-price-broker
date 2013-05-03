@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import org.springframework.stereotype.Service;
+import pl.edu.agh.iosr.model.entity.StockQuote;
 import pl.edu.agh.iosr.model.entity.Tenant;
 import pl.edu.agh.iosr.model.entity.UserEntity;
 
@@ -50,5 +51,13 @@ public class TenantResolverServiceImpl implements TenantResolverService {
             return true;
         }
         return canModify(userEntity.getTenant());
+    }
+
+    @Override
+    public Boolean canModify(StockQuote stockQuote) {
+        if(stockQuote == null){
+            return true;
+        }
+        return canModify(stockQuote.getTenant());
     }
 }
