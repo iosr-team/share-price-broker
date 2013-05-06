@@ -1,4 +1,4 @@
 language: java
-script: "mvn install --quiet -DskipTests=true -B -U"
+script: mvn install --quiet -DskipTests=true -B -U
 git:
   submodules: false
