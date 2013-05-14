@@ -64,11 +64,11 @@ Koncepcja rozwiązania
   	
 Technologie i narzędzia
 
-    * komunikacja JMS: RabbitMQ
+    * komunikacja: Spring AMQP i RabbitMQ
 
     * Spring MVC do budowy aplikacji klienta
 
-    * baza danych: MySQL lub vFabric Postgres
+    * baza danych: vFabric Postgres
 
     * persystencja: Hibernate
     
