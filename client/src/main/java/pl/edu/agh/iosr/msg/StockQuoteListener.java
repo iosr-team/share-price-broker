@@ -81,7 +81,7 @@ public class StockQuoteListener implements MessageListener {
 		return stockCompanyService;
 	}
 
-	public void setStockCompanyService(StockCompanyService stockIndexService) {
-		this.stockCompanyService = stockIndexService;
+	public void setStockCompanyService(StockCompanyService stockCompanyService) {
+		this.stockCompanyService = stockCompanyService;
 	}
 }

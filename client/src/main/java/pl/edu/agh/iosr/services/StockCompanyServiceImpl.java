@@ -13,7 +13,7 @@ import pl.edu.agh.iosr.model.entity.StockCompany;
 
 @Service
 public class StockCompanyServiceImpl implements StockCompanyService {
-
+	
 	private EntityManager entityManager;
 
 	public EntityManager getEntityManager() {
@@ -52,7 +52,7 @@ public class StockCompanyServiceImpl implements StockCompanyService {
 	@Override
 	@Transactional
 	public List<StockCompany> getAllStockCompanies() {
-		Query query = getEntityManager().createQuery("from StockIndex");
+		Query query = getEntityManager().createQuery("from StockCompany");
 		List<StockCompany> resultList = (List<StockCompany>) query.getResultList();
 		return (resultList != null && resultList.size() > 0) ? resultList : null;
 	}

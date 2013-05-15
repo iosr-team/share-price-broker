@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "STOCK_INDEX")
+@Table(name = "STOCK_COMPANY")
 public class StockCompany {
 	/*
 	 * @Id

@@ -1,14 +1,15 @@
 package pl.edu.agh.iosr.services;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import pl.edu.agh.iosr.model.entity.StockCompany;
-import pl.edu.agh.iosr.model.entity.StockQuote;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import pl.edu.agh.iosr.model.entity.StockQuote;
 
 
 @Service("stockQuoteService")

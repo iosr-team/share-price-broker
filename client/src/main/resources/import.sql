@@ -11,8 +11,8 @@ insert into tenant(id,name,enabled,description) values(nextval('hibernate_sequen
 insert into tenant(id,name,enabled,description) values(nextval('hibernate_sequence'),'PK',true,'Politechnika Krakowska');
 
 -- init stock indices ---------------------------------------------------------------
-insert into STOCK_INDEX (symbol, name) values ('GOOG', 'Google')
-insert into STOCK_INDEX (symbol, name) values ('PGE', 'Polska Grupa Energetyczna SA')
+insert into STOCK_COMPANY (symbol, name) values ('GOOG', 'Google')
+insert into STOCK_COMPANY (symbol, name) values ('PGE', 'Polska Grupa Energetyczna SA')
 
 
 -- init users ---------------------------------------------------------------
@@ -22,6 +22,11 @@ insert into users(id,email,enabled,login, password, name, surname, role_id, tena
 insert into users(id,email,enabled,login, password, name, surname, role_id, tenant_id) values(nextval('hibernate_sequence'),'ola@example.com',true, 'ola', '123', 'Ola', 'Kowalska',(select id from role where name = 'ROLE_USER'), (select id from tenant where name = 'AGH'));
 
 insert into users(id,email,enabled,login, password, name, surname, role_id, tenant_id) values(nextval('hibernate_sequence'),'marcin@example.com',true, 'marcin', '123', 'Marcin', 'Wrog',(select id from role where name = 'ROLE_ADMIN'), (select id from tenant where name = 'UJ'));
+
+-- init bindings ---------------------------------------------------------------------
+insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('GOOG',	(select id from tenant where name = 'AGH'))
+insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('PGE',	(select id from tenant where name = 'AGH'))
+insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('GOOG',	(select id from tenant where name = 'UJ'))
 
 -- sample stock quotes ---------------------------------------------------------------
 insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1200,	now(), (select id from tenant where name = 'AGH'))
