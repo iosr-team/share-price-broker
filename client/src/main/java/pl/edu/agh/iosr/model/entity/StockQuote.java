@@ -16,30 +16,32 @@ public class StockQuote {
 	@GeneratedValue
 	private Long id;
 
-    private String companyName;
+	@ManyToOne
+	@JoinColumn(name = "STOCK_COMPANY_SYMBOL")
+    private StockCompany stockCompany;
 
 	private Date date;
 	
 	private Double value;
 
-    private Double change;
-
 	@ManyToOne
 	@JoinColumn(name = "TENANT_ID")
 	private Tenant tenant;
-	
-	@ManyToOne
-	@JoinColumn(name = "STOCK_INDEX_ID")
-	private StockIndex stockIndex;
-	
-	//TODO: other params
-	
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public StockCompany getStockCompany() {
+		return stockCompany;
+	}
+
+	public void setStockCompany(StockCompany company) {
+		this.stockCompany = company;
 	}
 
 	public Date getDate() {
@@ -65,28 +67,4 @@ public class StockQuote {
 	public void setTenant(Tenant tenant) {
 		this.tenant = tenant;
 	}
-
-	public StockIndex getStockIndex() {
-		return stockIndex;
-	}
-
-	public void setStockIndex(StockIndex stockIndex) {
-		this.stockIndex = stockIndex;
-	}
-
-    public Double getChange() {
-        return change;
-    }
-
-    public void setChange(Double change) {
-        this.change = change;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
 }

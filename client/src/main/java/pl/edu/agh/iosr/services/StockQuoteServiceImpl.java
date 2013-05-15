@@ -2,7 +2,7 @@ package pl.edu.agh.iosr.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.edu.agh.iosr.model.entity.StockIndex;
+import pl.edu.agh.iosr.model.entity.StockCompany;
 import pl.edu.agh.iosr.model.entity.StockQuote;
 
 import javax.persistence.EntityManager;

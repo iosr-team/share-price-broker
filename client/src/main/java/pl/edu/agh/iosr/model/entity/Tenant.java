@@ -27,10 +27,10 @@ public class Tenant {
 
 	@ManyToMany
 	@JoinTable(
-			name = "TENANT_STOCK_INDICIES", 
+			name = "TENANT_STOCK_COMPANIES", 
 			joinColumns = { @JoinColumn(name = "TENANT_ID", referencedColumnName = "ID") }, 
-			inverseJoinColumns = { @JoinColumn(name = "STOCK_INDEX_ID", referencedColumnName = "ID") })
-	private List<StockIndex> observedStockIndicies;
+			inverseJoinColumns = { @JoinColumn(name = "STOCK_COMPANY_SYMBOL", referencedColumnName = "SYMBOL") })
+	private List<StockCompany> observedStockCompanies;
 
 	public Long getId() {
 		return id;
@@ -56,12 +56,12 @@ public class Tenant {
 		this.description = description;
 	}
 
-	public List<StockIndex> getObservedStockIndicies() {
-		return observedStockIndicies;
+	public List<StockCompany> getObservedStockCompanies() {
+		return observedStockCompanies;
 	}
 
-	public void setObservedStockIndicies(List<StockIndex> observedStockIndicies) {
-		this.observedStockIndicies = observedStockIndicies;
+	public void setObservedStockIndicies(List<StockCompany> observedStockCompanies) {
+		this.observedStockCompanies = observedStockCompanies;
 	}
 	
 	public String toString(){

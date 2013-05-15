@@ -10,6 +10,6 @@
         <mapping class="pl.edu.agh.iosr.model.entity.Tenant" />
         <mapping class="pl.edu.agh.iosr.model.entity.Role" />
         <mapping class="pl.edu.agh.iosr.model.entity.StockQuote" />
-        <mapping class="pl.edu.agh.iosr.model.entity.StockIndex" />
+        <mapping class="pl.edu.agh.iosr.model.entity.StockCompany" />
     </session-factory>   
 </hibernate-configuration>

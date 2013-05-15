@@ -49,10 +49,8 @@
 		        	</tr>
 		        	<tr>
 		        		<%--<th class="controlColumn"><input type="checkbox" class="itemCheckboxParent" /></th>--%>
-		        		<th>Index</th>
-                        <th>Company Name</th>
+		        		<th>Symbol</th>
 		        		<th>Value</th>
-                        <th>Change</th>
 		        		<th>Date</th>
                         <sec:authorize ifAnyGranted="ROLE_SUPERUSER">
                             <th>Tenant</th>
@@ -66,19 +64,11 @@
 	        			<tr>
 		        			<%--<td class="controlColumn"><input name="itemIds" value = "${ stockQuote.id }" type="checkbox" class="itemCheckbox" id="item_${ stockQuote.id }" /></td>--%>
 		        			<td>
-		        				<a class="" href="#">${ stockQuote.stockIndex.description }</a>
+		        				<a class="" href="#">${ stockQuote.stockCompany.symbol }</a>
 							</td>
-
-                            <td>
-                                <a class="" href="#">${ stockQuote.companyName }</a>
-                            </td>
-
-							<td>
+                  			<td>
 		        				<a class="" href="#">${ stockQuote.value }</a>
 							</td>
-                            <td>
-                                <a class="" href="#">${ stockQuote.change }</a>
-                            </td>
 							<td>
 		        				<a class="" href="#"><fmt:formatDate value="${ stockQuote.date }" pattern="yyyy-MM-dd HH:mm:ss" /></a>
 							</td>

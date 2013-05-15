@@ -1,11 +1,8 @@
 package pl.edu.agh.iosr.model.command;
 
-import pl.edu.agh.iosr.model.entity.Role;
-import pl.edu.agh.iosr.model.entity.Tenant;
-import pl.edu.agh.iosr.model.entity.UserEntity;
-
-import java.util.List;
 import java.util.Map;
+
+import pl.edu.agh.iosr.model.entity.UserEntity;
 
 public class UserCommand {
     private Long id;
