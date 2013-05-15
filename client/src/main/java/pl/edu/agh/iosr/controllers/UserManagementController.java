@@ -1,18 +1,21 @@
 package pl.edu.agh.iosr.controllers;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import pl.edu.agh.iosr.model.command.UserCommand;
 import pl.edu.agh.iosr.model.entity.Role;
 import pl.edu.agh.iosr.model.entity.Tenant;
 import pl.edu.agh.iosr.model.entity.UserEntity;
-import pl.edu.agh.iosr.services.TenantResolverService;
-
-import java.util.List;
 
 @Controller
 public class UserManagementController extends AbstractUserController{
