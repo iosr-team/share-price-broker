@@ -12,4 +12,6 @@ public interface StockCompanyService {
 	StockCompany createStockCompany(StockCompany stockCompany);
 
 	List<StockCompany> getAllStockCompanies();
+	
+	List<StockCompany> getObservedStockCompanies();
 }

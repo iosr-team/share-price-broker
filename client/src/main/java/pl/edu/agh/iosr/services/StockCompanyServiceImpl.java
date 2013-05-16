@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,9 @@ import pl.edu.agh.iosr.model.entity.StockCompany;
 
 @Service
 public class StockCompanyServiceImpl implements StockCompanyService {
+	
+    @Autowired
+    private TenantResolverService tenantResolverService;
 	
 	private EntityManager entityManager;
 
@@ -55,5 +59,11 @@ public class StockCompanyServiceImpl implements StockCompanyService {
 		Query query = getEntityManager().createQuery("from StockCompany");
 		List<StockCompany> resultList = (List<StockCompany>) query.getResultList();
 		return (resultList != null && resultList.size() > 0) ? resultList : null;
+	}
+
+	@Override
+	@Transactional
+	public List<StockCompany> getObservedStockCompanies() {
+		return tenantResolverService.resolveTenant().getObservedStockCompanies();
 	}
 }
