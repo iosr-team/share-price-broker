@@ -91,8 +91,8 @@ public class TenantManagementController {
             try{
                 tenantService.removeTenantById(id);
             }catch(Exception e){
-                log.error("error while removing tenent",e);
-                errorMsg = "There were some errors when removing tenents";
+                log.error("error while removing tenant", e);
+                errorMsg = "There were some errors when removing tenants";
             }
         }
         if(errorMsg.equals("")){

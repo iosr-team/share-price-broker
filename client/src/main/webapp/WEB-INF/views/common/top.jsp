@@ -30,16 +30,16 @@
                    href="${pageContext.request.contextPath}/stockQuote/list">
                 <span>Stock Quotes</span></a>
             </li>
+            <li><a class=""
+					href="${pageContext.request.contextPath}/stockCompanies">
+					<span>Stock Companies</span></a>
+			</li>
 
 
 			<sec:authorize ifAnyGranted="ROLE_ADMIN">
 				<li><a class=""
 					href="${pageContext.request.contextPath}/user/list">
 					<span>User Management</span></a>
-				</li>
-				<li><a class=""
-					href="${pageContext.request.contextPath}/stockCompany/list">
-					<span>Stock Companies</span></a>
 				</li>
 			</sec:authorize>
 			
