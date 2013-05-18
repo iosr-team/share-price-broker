@@ -11,8 +11,8 @@ insert into tenant(id,name,enabled,description) values(nextval('hibernate_sequen
 insert into tenant(id,name,enabled,description) values(nextval('hibernate_sequence'),'PK',true,'Politechnika Krakowska');
 
 -- init stock indices ---------------------------------------------------------------
-insert into STOCK_COMPANY (symbol, name) values ('GOOG', 'Google')
-insert into STOCK_COMPANY (symbol, name) values ('PGE', 'Polska Grupa Energetyczna SA')
+insert into STOCK_COMPANY (symbol, name) values ('GOOG', 'Google Inc.')
+insert into STOCK_COMPANY (symbol, name) values ('NVDA', 'NVIDIA Corporation')
 
 
 -- init users ---------------------------------------------------------------
@@ -25,19 +25,19 @@ insert into users(id,email,enabled,login, password, name, surname, role_id, tena
 
 -- init bindings ---------------------------------------------------------------------
 insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('GOOG',	(select id from tenant where name = 'AGH'))
-insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('PGE',	(select id from tenant where name = 'AGH'))
+insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('NVDA',	(select id from tenant where name = 'AGH'))
 insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('GOOG',	(select id from tenant where name = 'UJ'))
 
 -- sample stock quotes ---------------------------------------------------------------
 insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1200,	now(), (select id from tenant where name = 'AGH'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1150, 	now(), (select id from tenant where name = 'AGH'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1134, 	now(), (select id from tenant where name = 'AGH'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1150, now(), (select id from tenant where name = 'AGH'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1134, now(), (select id from tenant where name = 'AGH'))
 insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 110,	now(), (select id from tenant where name = 'AGH'))
                                                  
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'PGE', 3200,	now(), (select id from tenant where name = 'UJ'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'PGE', 3150,	now(), (select id from tenant where name = 'UJ'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'PGE', 3134, 	now(), (select id from tenant where name = 'UJ'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'PGE', 310, 	now(), (select id from tenant where name = 'UJ'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3200,	now(), (select id from tenant where name = 'UJ'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3150,	now(), (select id from tenant where name = 'UJ'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3134, now(), (select id from tenant where name = 'UJ'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 310, 	now(), (select id from tenant where name = 'UJ'))
                                                  
 --insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NBP', 2200, 5, now(), (select id from stock_index where name = 'wig20'), (select id from tenant where name = 'PK'))
 --insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'Mostostal', 2150, 17, now(), (select id from stock_index where name = 'wig20'), (select id from tenant where name = 'PK'))
