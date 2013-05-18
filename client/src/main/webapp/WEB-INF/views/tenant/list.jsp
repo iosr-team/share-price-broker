@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/management_table.css" />" />
 		<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/buttons.css" />" />
 		<script src="<c:url value="${pageContext.request.contextPath}/resources/javascript/managementTable.js" />" ></script>
-		
+
 		<title>Tenant list</title>
 	</jsp:attribute>
 	
@@ -28,14 +28,9 @@
 	        		<tr>
 		        		<th class="tableTitle" colspan="4">
 		        			Tenant Management
-		        			<div class="tableButtons">
-								<a href="${pageContext.request.contextPath}/tenant/add" class="actionButton">add</a>
-								<a href="#" class="removeButton">remove</a>
-							</div>
 		        		</th>
 		        	</tr>
 		        	<tr>
-		        		<th class="controlColumn"><input type="checkbox" class="itemCheckboxParent" /></th>
 		        		<th>Name</th>
 		        		<th>Description</th>
                         <th>Enabled</th>
@@ -61,7 +56,7 @@
 	        </table>
 	        <div class="buttonWrapper">
 				<a href="${pageContext.request.contextPath}/tenant/add" class="actionButton">add</a>
-				<a href="#" class="removeButton">remove</a>
+				<a href="#" id="removeButton" class="removeButton">remove</a>
 			</div>
 	    </form>
     </jsp:body>

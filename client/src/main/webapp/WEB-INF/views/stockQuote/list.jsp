@@ -30,19 +30,11 @@
                         <sec:authorize ifAnyGranted="ROLE_SUPERUSER">
                             <th class="tableTitle" colspan="6">
                                 Stock Quotes
-                                <div class="tableButtons">
-                                        <%--<a href="${pageContext.request.contextPath}/stockQuote/add" class="actionButton">add</a>
-                                        <a href="#" class="removeButton">remove</a>--%>
-                                </div>
                             </th>
                         </sec:authorize>
                         <sec:authorize ifNotGranted="ROLE_SUPERUSER">
                             <th class="tableTitle" colspan="5">
                                 Stock Quotes
-                                <div class="tableButtons">
-                                        <%--<a href="${pageContext.request.contextPath}/stockQuote/add" class="actionButton">add</a>
-                                        <a href="#" class="removeButton">remove</a>--%>
-                                </div>
                             </th>
                         </sec:authorize>
 
@@ -83,10 +75,6 @@
 
 	        	<tbody>
 	        </table>
-            <div class="buttonWrapper">
-                <%--<a href="${pageContext.request.contextPath}/stockQuote/add" class="actionButton">add</a>
-                <a href="#" class="removeButton">remove</a>--%>
-            </div>
 	    </form>
     </jsp:body>
     

@@ -22,7 +22,7 @@ jQuery(document).ready(function(){
         }
     });
 
-    jQuery('.removeButton').click(function(){
+    jQuery('#removeButton').click(function(){
         jQuery(this).parents('form').submit() ;
     });
 });
