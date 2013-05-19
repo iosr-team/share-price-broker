@@ -2,7 +2,6 @@ package pl.edu.agh.iosr.model.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,7 +16,7 @@ public class StockQuote {
 	@GeneratedValue
 	private Long id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "STOCK_COMPANY_SYMBOL")
     private StockCompany stockCompany;
 
@@ -25,7 +24,7 @@ public class StockQuote {
 	
 	private Double value;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "TENANT_ID")
 	private Tenant tenant;
 
