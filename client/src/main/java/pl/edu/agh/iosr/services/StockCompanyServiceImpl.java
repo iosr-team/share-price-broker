@@ -11,13 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.edu.agh.iosr.model.entity.StockCompany;
+import pl.edu.agh.iosr.model.entity.Tenant;
 
 @Service
 public class StockCompanyServiceImpl implements StockCompanyService {
-	
-    @Autowired
-    private TenantResolverService tenantResolverService;
-	
+
+	@Autowired
+	private TenantResolverService tenantResolverService;
+
 	private EntityManager entityManager;
 
 	public EntityManager getEntityManager() {
@@ -57,13 +58,28 @@ public class StockCompanyServiceImpl implements StockCompanyService {
 	@Transactional
 	public List<StockCompany> getAllStockCompanies() {
 		Query query = getEntityManager().createQuery("from StockCompany");
-		List<StockCompany> resultList = (List<StockCompany>) query.getResultList();
-		return (resultList != null && resultList.size() > 0) ? resultList : null;
+		List<StockCompany> resultList = (List<StockCompany>) query
+				.getResultList();
+		return (resultList != null && resultList.size() > 0) ? resultList
+				: null;
 	}
 
 	@Override
 	@Transactional
 	public List<StockCompany> getObservedStockCompanies() {
-		return tenantResolverService.resolveTenant().getObservedStockCompanies();
+		return tenantResolverService.resolveTenant()
+				.getObservedStockCompanies();
+	}
+
+	@Override
+	@Transactional
+	public StockCompany merge(StockCompany stockCompany) {
+		return getEntityManager().merge(stockCompany);
+	}
+
+	@Override
+	@Transactional
+	public void removeStockCompanyBySymbol(String symbol) {
+		getEntityManager().remove(getStockCompany(symbol));
 	}
 }

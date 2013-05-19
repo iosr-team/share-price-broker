@@ -28,10 +28,6 @@
 	        		<tr>
 		        		<th class="tableTitle" colspan="8">
 		        			User Management
-                            <div class="tableButtons">
-                                <a href="${pageContext.request.contextPath}/user/add" class="actionButton">add</a>
-                                <a href="#" class="removeButton">remove</a>
-                            </div>
 		        		</th>
 		        	</tr>
 		        	<tr>
@@ -78,10 +74,10 @@
 
 	        	<tbody>
 	        </table>
-            <div class="buttonWrapper">
-                <a href="${pageContext.request.contextPath}/user/add" class="actionButton">add</a>
-                <a href="#" class="removeButton">remove</a>
-            </div>
+	     	<div class="buttonWrapper">
+				<a href="${pageContext.request.contextPath}/stockQuote/add" class="actionButton">add</a>
+				<a href="#" id="removeButton" class="removeButton">remove</a>
+			</div>
 	    </form>
     </jsp:body>
     

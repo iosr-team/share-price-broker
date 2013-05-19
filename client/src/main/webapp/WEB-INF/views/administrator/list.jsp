@@ -28,10 +28,6 @@
 	        		<tr>
 		        		<th class="tableTitle" colspan="7">
 		        			Administrator Management
-                            <div class="tableButtons">
-                                <a href="${pageContext.request.contextPath}/administrator/add" class="actionButton">add</a>
-                                <a href="#" class="removeButton">remove</a>
-                            </div>
 		        		</th>
 		        	</tr>
 		        	<tr>
@@ -76,7 +72,7 @@
 	        </table>
             <div class="buttonWrapper">
                 <a href="${pageContext.request.contextPath}/administrator/add" class="actionButton">add</a>
-                <a href="#" class="removeButton">remove</a>
+                <a href="#" id="removeButton" class="removeButton">remove</a>
             </div>
 	    </form>
     </jsp:body>

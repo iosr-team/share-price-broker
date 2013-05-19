@@ -51,21 +51,14 @@
 	<rabbit:queue name="PK"/>
 
     <!--key = stock index-->
-    <!--example: wig, wig20, dow.jones, dax-->
 	<rabbit:direct-exchange name="stock-broker">
 		<rabbit:bindings>
             <!--queue for tenant: AGH-->
-			<rabbit:binding queue="AGH" key="wig"/>
-            <rabbit:binding queue="AGH" key="wig20"/>
-            <rabbit:binding queue="AGH" key="dow.jones"/>
+			<rabbit:binding queue="AGH"	key="GOOG"/>
+            <rabbit:binding queue="AGH"	key="NVDA"/>
 
             <!--queue tenant: UJ-->
-            <rabbit:binding queue="UJ" key="dow.jones"/>
-            <rabbit:binding queue="UJ" key="dax"/>
-
-            <!--queue tenant: PK-->
-            <rabbit:binding queue="PK" key="wig20"/>
-            <rabbit:binding queue="PK" key="dow.jones"/>
+            <rabbit:binding queue="UJ"	key="GOOG"/>
 		</rabbit:bindings>
 	</rabbit:direct-exchange>
 

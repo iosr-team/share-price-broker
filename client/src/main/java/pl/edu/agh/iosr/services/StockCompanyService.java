@@ -14,4 +14,8 @@ public interface StockCompanyService {
 	List<StockCompany> getAllStockCompanies();
 	
 	List<StockCompany> getObservedStockCompanies();
+	
+	StockCompany merge(StockCompany stockCompany);
+	
+	void removeStockCompanyBySymbol(String symbol);
 }

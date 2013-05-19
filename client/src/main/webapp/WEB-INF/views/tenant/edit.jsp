@@ -49,7 +49,9 @@
                     ${param.errorMsg}
             </div>
         </c:if>
+        
         <div class="common-form">
+        	<h1>Edit Tenant</h1>
             <form:form modelAttribute="tenant" action="${pageContext.request.contextPath}/tenant/edit/${ tenant.id }" method="POST" id="editTenantForm">
 
                 <div>
