@@ -21,6 +21,10 @@ public class UserServiceWithTenantImpl extends UserServiceImpl {
     @Autowired
     private TenantResolverService tenantResolverService;
 
+    public void setTenantResolverService(TenantResolverService tenantResolverService) {
+        this.tenantResolverService = tenantResolverService;
+    }
+
     @Override
     @Transactional
     public UserEntity getUserById(Long userId) {
