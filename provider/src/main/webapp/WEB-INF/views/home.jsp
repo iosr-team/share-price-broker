@@ -9,14 +9,13 @@
     <h1>Simple RabbitMQ Application</h1>
 
     <h2>Publish a message</h2>
-    <p><b>MOCK MESSAGE FORMAT: company_symbol#value</b>, eg: GOOG#123</p>
     <p><b>SAMPLE ROUTING KEYS:</b> GOOG, NVDA</p>
     
     <form:form modelAttribute="message" action="/publish" method="post">
-		<form:label for="value" path="value">Message to publish:</form:label>
+		<form:label for="value" path="value">Value:</form:label>
 		<form:input path="value" type="text"/>
 		
-		<form:label for="key" path="key">Routing key:</form:label>
+		<form:label for="key" path="key">Company symbol:</form:label>
 		<form:input path="key" type="text"/>
 		
 		<input type="submit" value="Publish"/>

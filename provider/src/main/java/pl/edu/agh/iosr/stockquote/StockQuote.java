@@ -1,8 +1,10 @@
 package pl.edu.agh.iosr.stockquote;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class StockQuote {
+	private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 	
 	private String companySymbol; 
 	
@@ -35,7 +37,7 @@ public class StockQuote {
 	
 	@Override
 	public String toString() {
-		return companySymbol + "#" + value + "#" + date;
+		return companySymbol + "#" + value + "#" + new SimpleDateFormat(DATE_FORMAT).format(date);
 	}
 	
 

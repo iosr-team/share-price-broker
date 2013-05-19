@@ -1,6 +1,6 @@
 package pl.edu.agh.iosr.msg;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,8 @@ import pl.edu.agh.iosr.services.StockQuoteService;
 import pl.edu.agh.iosr.services.TenantService;
 
 public class StockQuoteListener implements MessageListener {
-
+	private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	
 	private final Logger log = LoggerFactory
 			.getLogger(StockQuoteListener.class);
 
@@ -34,10 +35,7 @@ public class StockQuoteListener implements MessageListener {
 
 	@Override
 	public void onMessage(Message message) {
-		// TODO: this is only a mock
-		// TODO: message format and transformation into StockQuote
-
-		// MOCK FOMRAT: company_symbol#value
+		// FOMRAT: company_symbol#value#date
 		String msg = new String(message.getBody());
 		log.debug("RECEIVED MESSAGE (" + this.tenantName + "): " + msg);
 
@@ -45,11 +43,11 @@ public class StockQuoteListener implements MessageListener {
 			String[] parts = msg.split("#");
 
 			StockQuote stockQuote = new StockQuote();
-			stockQuote.setDate(new Date());
 
 			stockQuote.setStockCompany(stockCompanyService
 					.getStockCompany(parts[0]));
 			stockQuote.setValue(Double.parseDouble(parts[1]));
+			stockQuote.setDate(new SimpleDateFormat(DATE_FORMAT).parse(parts[2]));
 
 			stockQuote
 					.setTenant(tenantService.getTenantByName(this.tenantName));
