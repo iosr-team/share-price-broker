@@ -29,9 +29,9 @@ public class FetcherInitializer implements InitializingBean  {
 		StockQuoteListener stockQuoteListener = new StockQuoteListenerImpl(amqpTemplate);
 		
 		stockQuoteFetcher.setObservedCompaniesSymbols(companiesSymbols);
-		stockQuoteFetcher.addPriceListener(stockQuoteListener);
+		stockQuoteFetcher.addQuoteListener(stockQuoteListener);
 		
-		new Thread(stockQuoteFetcher).run();
+		new Thread(stockQuoteFetcher).start();
 	}
 	
 	public void setCompaniesSymbols(List<String> companiesSymbols) {

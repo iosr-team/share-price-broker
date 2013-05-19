@@ -25,8 +25,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="pl.edu.agh.iosr.controller" />
-	
+	<context:component-scan base-package="pl.edu.agh.iosr" />
 	
 	
 	<!-- RabbitMQ -->
@@ -75,11 +74,12 @@
 			</beans:list>
 		</beans:property>
 		
-		<beans:property name="stockQuoteFetcher" ref="DummyFetcher"/>
+		<beans:property name="stockQuoteFetcher" ref="YahooFetcher"/>
 		
 	</beans:bean>
 	
 	<beans:bean id="DummyFetcher" class="pl.edu.agh.iosr.fetchquotes.dummy.DummyStockQuoteFetcher"/>
-	<!-- <beans:bean id="YahooFetcher" class="pl.edu.agh.iosr.fetchquotes.yahoofinance.YahooFinanceStockQuoteFetcher"/> -->
+	<beans:bean id="YahooFetcher" class="pl.edu.agh.iosr.fetchquotes.yahoofinance.YahooFinanceStockQuoteFetcher"/>
+		
 	
 </beans:beans>

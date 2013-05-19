@@ -11,8 +11,8 @@ public abstract class StockQuoteFetcherAdapter implements StockQuoteFetcher {
 	private List<StockQuoteListener> listeners = new ArrayList<StockQuoteListener>();
 	
 	@Override
-	public void addPriceListener(StockQuoteListener priceListener) {
-		listeners.add(priceListener);
+	public void addQuoteListener(StockQuoteListener quoteListener) {
+		listeners.add(quoteListener);
 	}
 	
 	protected Collection<StockQuoteListener> getListeners() {

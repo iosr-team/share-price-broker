@@ -18,7 +18,15 @@ public class StockQuote {
 
 	public double getValue() {
 		return value;
-	}	
+	}
+	
+	public void setValue(double value) {
+		this.value = value;
+	}
+	
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	public String getCompanySymbol() {
 		return companySymbol;
@@ -35,6 +43,9 @@ public class StockQuote {
 		this.date = date;
 	}
 	
+	public StockQuote() {
+	}
+
 	@Override
 	public String toString() {
 		return companySymbol + "#" + value + "#" + new SimpleDateFormat(DATE_FORMAT).format(date);
