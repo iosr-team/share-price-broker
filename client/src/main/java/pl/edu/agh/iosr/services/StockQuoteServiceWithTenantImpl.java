@@ -56,4 +56,20 @@ public class StockQuoteServiceWithTenantImpl extends StockQuoteServiceImpl {
         List<StockQuote> resultList = (List<StockQuote>) query.getResultList();
         return  (resultList != null && resultList.size() > 0) ?  resultList : null;
     }
+
+    @Override
+    @Transactional
+    public List<StockQuote> getStockQuotesForCompany(String companySymbol) {
+
+        Tenant myTenant = tenantResolverService.resolveTenant();
+        if(myTenant.isSuperuser()){
+            return super.getStockQuotesForCompany(companySymbol);
+        }
+
+        Query query = getEntityManager().createQuery("from StockQuote s where s.stockCompany.symbol = :companySymbol and s.tenant.name = :tenantName");
+        query.setParameter("companySymbol",companySymbol);
+        query.setParameter("tenantName", myTenant.getName());
+        List<StockQuote> resultList = (List<StockQuote>) query.getResultList();
+        return  (resultList != null && resultList.size() > 0) ?  resultList : null;
+    }
 }

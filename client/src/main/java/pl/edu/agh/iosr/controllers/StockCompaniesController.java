@@ -1,22 +1,22 @@
 package pl.edu.agh.iosr.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import pl.edu.agh.iosr.model.entity.StockCompany;
+import pl.edu.agh.iosr.model.entity.StockQuote;
 import pl.edu.agh.iosr.model.entity.Tenant;
 import pl.edu.agh.iosr.model.entity.UserEntity;
+import pl.edu.agh.iosr.model.response.StockCompanyHistory;
 import pl.edu.agh.iosr.services.StockCompanyService;
+import pl.edu.agh.iosr.services.StockQuoteService;
 import pl.edu.agh.iosr.services.TenantResolverService;
 import pl.edu.agh.iosr.services.TenantService;
 
@@ -34,6 +34,10 @@ public class StockCompaniesController {
 	
 	@Autowired
 	private TenantService tenantService;
+
+    @Autowired
+    @Qualifier("stockQuoteServiceWithTenant")
+    private StockQuoteService stockQuoteService;
 
 	String listCompaniesByUser(ModelMap model) {
 		model.put("stockCompanies",
@@ -127,4 +131,26 @@ public class StockCompaniesController {
 			stockCompanyService.merge(stockCompany);
 		return "redirect:/stockCompanies";
 	}
+
+    @RequestMapping(value = "/stockCompanies/history/{symbol}", method = RequestMethod.GET)
+    public String editForm(ModelMap model,
+        @PathVariable String symbol){
+
+        model.put("companySymbol",symbol);
+        return "stockCompany/history";
+    }
+
+    @RequestMapping(value="/stockCompanies/data/{symbol}", method=RequestMethod.GET)
+    public @ResponseBody StockCompanyHistory getAvailability(
+            @PathVariable String symbol) {
+        // converts by default to JSON format
+
+        List<StockQuote> stockQuotes = stockQuoteService.getStockQuotesForCompany(symbol);
+
+        StockCompanyHistory result = new StockCompanyHistory();
+        result.init("Stock Quotes [ "+symbol+" ]",stockQuotes);
+
+        return result;
+    }
+
 }

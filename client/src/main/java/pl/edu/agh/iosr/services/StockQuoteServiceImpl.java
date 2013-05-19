@@ -46,4 +46,13 @@ public class StockQuoteServiceImpl implements StockQuoteService {
         List<StockQuote> resultList = (List<StockQuote>) query.getResultList();
         return  (resultList != null && resultList.size() > 0) ?  resultList : null;
     }
+
+    @Override
+    @Transactional
+    public List<StockQuote> getStockQuotesForCompany(String companySymbol) {
+        Query query = getEntityManager().createQuery("from StockQuote s where s.stockCompany.symbol = :companySymbol");
+        query.setParameter("companySymbol",companySymbol);
+        List<StockQuote> resultList = (List<StockQuote>) query.getResultList();
+        return  (resultList != null && resultList.size() > 0) ?  resultList : null;
+    }
 }

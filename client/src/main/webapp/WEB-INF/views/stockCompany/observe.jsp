@@ -54,10 +54,10 @@
 		        				<input name="symbols" value = "${ stockCompany.symbol }" type="checkbox" class="itemCheckbox" id="symbol_${ stockCompany.symbol }" checked />
 		        			</td>
 		        			<td>
-		        				<a class="" href="#">${ stockCompany.symbol }</a>
+                                <a class="" href="${pageContext.request.contextPath}/stockCompanies/history/${ stockCompany.symbol }">${ stockCompany.symbol }</a>
 							</td>
                   			<td>
-		        				<a class="" href="#">${ stockCompany.name }</a>
+                                <a class="" href="${pageContext.request.contextPath}/stockCompanies/history/${ stockCompany.symbol }">${ stockCompany.name }</a>
 							</td>
 							<td>
 								yes

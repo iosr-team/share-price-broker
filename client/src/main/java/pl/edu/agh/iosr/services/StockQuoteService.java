@@ -10,4 +10,6 @@ public interface StockQuoteService {
     StockQuote createStockQuote(StockQuote stockQuote);
     
     List<StockQuote> getAllStockQuotes();
+
+    List<StockQuote> getStockQuotesForCompany(String companySymbol);
 }

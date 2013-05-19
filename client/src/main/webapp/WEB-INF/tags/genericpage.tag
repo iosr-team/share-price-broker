@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@tag description="Page template" language="java" pageEncoding="UTF-8"%>
@@ -8,7 +9,7 @@
 <html>
 	
 	<head>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="<c:url value="${pageContext.request.contextPath}/resources/css/style.css" />" />
 		
 		<jsp:invoke fragment="headContent" />

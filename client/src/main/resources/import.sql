@@ -29,15 +29,15 @@ insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('NVD
 insert into TENANT_STOCK_COMPANIES (STOCK_COMPANY_SYMBOL, TENANT_ID) values('GOOG',	(select id from tenant where name = 'UJ'))
 
 -- sample stock quotes ---------------------------------------------------------------
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1200,	now(), (select id from tenant where name = 'AGH'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1150, now(), (select id from tenant where name = 'AGH'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1134, now(), (select id from tenant where name = 'AGH'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 110,	now(), (select id from tenant where name = 'AGH'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1200,	(timestamp 'now' - interval '180 minutes'), (select id from tenant where name = 'AGH'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1150, (timestamp 'now' - interval '135 minutes'), (select id from tenant where name = 'AGH'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 1134, (timestamp 'now' - interval '90 minutes'), (select id from tenant where name = 'AGH'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'GOOG', 110,	(timestamp 'now' - interval '45 minutes'), (select id from tenant where name = 'AGH'))
                                                  
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3200,	now(), (select id from tenant where name = 'UJ'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3150,	now(), (select id from tenant where name = 'UJ'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3134, now(), (select id from tenant where name = 'UJ'))
-insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 310, 	now(), (select id from tenant where name = 'UJ'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3200,	(timestamp 'now' - interval '180 minutes'), (select id from tenant where name = 'UJ'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3150,	(timestamp 'now' - interval '135 minutes'), (select id from tenant where name = 'UJ'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 3134, (timestamp 'now' - interval '90 minutes'), (select id from tenant where name = 'UJ'))
+insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NVDA', 310, 	(timestamp 'now' - interval '45 minutes'), (select id from tenant where name = 'UJ'))
                                                  
 --insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL, value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'NBP', 2200, 5, now(), (select id from stock_index where name = 'wig20'), (select id from tenant where name = 'PK'))
 --insert into STOCK_QUOTE (id, STOCK_COMPANY_SYMBOL value, date, TENANT_ID) values (nextval('hibernate_sequence'), 'Mostostal', 2150, 17, now(), (select id from stock_index where name = 'wig20'), (select id from tenant where name = 'PK'))

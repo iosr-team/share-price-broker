@@ -41,10 +41,10 @@
 
 	        			<tr>
 		        			<td>
-		        				${ stockCompany.symbol }
+                                <a class="" href="${pageContext.request.contextPath}/stockCompanies/history/${ stockCompany.symbol }">${ stockCompany.symbol }</a>
 							</td>
                   			<td>
-		        				${ stockCompany.name }
+                                <a class="" href="${pageContext.request.contextPath}/stockCompanies/history/${ stockCompany.symbol }">${ stockCompany.name }</a>
 							</td>
 		        		</tr> 
 	        		</c:forEach>
