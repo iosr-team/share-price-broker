@@ -1,4 +1,4 @@
-package pl.edu.agh.iosr;
+package pl.edu.agh.iosr.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +24,7 @@ public class HomeController {
     	System.out.println("["+message.getKey()+"]["+message.getValue()+"]");
         amqpTemplate.convertAndSend(message.getKey(), message.getValue());
         model.addAttribute("published", true);
-        return home(model);
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/get", method=RequestMethod.POST)
@@ -37,6 +37,6 @@ public class HomeController {
         else
             model.addAttribute("got_queue_empty", true);
 
-        return home(model);
+        return "redirect:/";
     }
 }

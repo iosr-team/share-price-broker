@@ -10,8 +10,8 @@
 
     <h2>Publish a message</h2>
     <p><b>MOCK MESSAGE FORMAT: company_symbol#value</b>, eg: GOOG#123</p>
-    <p><b>SAMPLE ROUTING KEYS:</b> wig, wig20, dow.jones, dax</p>
-    <p><i>index name currently same as routing keys</i></p>
+    <p><b>SAMPLE ROUTING KEYS:</b> GOOG, NVDA</p>
+    
     <form:form modelAttribute="message" action="/publish" method="post">
 		<form:label for="value" path="value">Message to publish:</form:label>
 		<form:input path="value" type="text"/>

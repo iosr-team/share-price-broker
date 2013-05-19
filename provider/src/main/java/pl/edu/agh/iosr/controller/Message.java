@@ -1,4 +1,4 @@
-package pl.edu.agh.iosr;
+package pl.edu.agh.iosr.controller;
 
 
 public class Message {
