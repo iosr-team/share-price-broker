@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import pl.edu.agh.iosr.stockquote.StockQuoteListener;
 
-public interface StockQuoteFetcher {
+public interface StockQuoteFetcher extends Runnable {
 	void addPriceListener(StockQuoteListener priceListener);
 	
 	void addObservedCompanySymbol(String companySymbol);

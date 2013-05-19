@@ -7,7 +7,7 @@ import java.util.List;
 import pl.edu.agh.iosr.stockquote.StockQuoteListener;
 import pl.edu.agh.iosr.stockquote.StockQuote;
 
-public class StockQuoteFetcherAdapter implements StockQuoteFetcher {
+public abstract class StockQuoteFetcherAdapter implements StockQuoteFetcher {
 	private List<StockQuoteListener> listeners = new ArrayList<StockQuoteListener>();
 	
 	@Override
@@ -19,7 +19,7 @@ public class StockQuoteFetcherAdapter implements StockQuoteFetcher {
 		return listeners;
 	}
 
-	protected void newSharePrice(String name, StockQuote stockQuote) {
+	protected void newStockQuote(StockQuote stockQuote) {
 		for(StockQuoteListener listener : listeners)
 			listener.newStockQuote(stockQuote);
 	}

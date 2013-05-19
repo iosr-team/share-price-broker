@@ -61,5 +61,25 @@
             <rabbit:binding queue="UJ"	key="GOOG"/>
 		</rabbit:bindings>
 	</rabbit:direct-exchange>
+	
+	
+	
+	<!--  FETCHER CONFIGURATION -->
+	
+	<beans:bean id="FetcherInitializer" class="pl.edu.agh.iosr.fetchquotes.FetcherInitializer">
 
+		<beans:property name="companiesSymbols">
+			<beans:list>
+				<beans:value>GOOG</beans:value>
+				<beans:value>NVDA</beans:value>
+			</beans:list>
+		</beans:property>
+		
+		<beans:property name="stockQuoteFetcher" ref="DummyFetcher"/>
+		
+	</beans:bean>
+	
+	<beans:bean id="DummyFetcher" class="pl.edu.agh.iosr.fetchquotes.dummy.DummyStockQuoteFetcher"/>
+	<!-- <beans:bean id="YahooFetcher" class="pl.edu.agh.iosr.fetchquotes.yahoofinance.YahooFinanceStockQuoteFetcher"/> -->
+	
 </beans:beans>
