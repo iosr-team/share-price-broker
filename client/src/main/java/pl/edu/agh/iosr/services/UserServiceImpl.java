@@ -16,7 +16,7 @@ import pl.edu.agh.iosr.model.entity.UserEntity;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
-	
+
 	private final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 	
     protected EntityManager entityManager;
