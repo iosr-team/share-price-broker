@@ -7,10 +7,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Szymon Gut, Bartłomiej Puto" />
     <meta name="Date-Revision-yyyymmdd" content="20130520" />
     <meta http-equiv="Content-Language" content="pl" />
-    <title>Share Price Broker - Specyfikacja wymagań</title>
+    <title>JMS Provider - </title>
     <link rel="stylesheet" href="./css/apache-maven-fluido-1.3.0.min.css" />
     <link rel="stylesheet" href="./css/site.css" />
     <link rel="stylesheet" href="./css/print.css" media="print" />
@@ -28,7 +27,7 @@
           <div id="banner">
         <div class="pull-left">
                                 <div id="bannerLeft">
-                <h2>Share price broker</h2>
+                <h2>JMS Provider</h2>
                 </div>
                       </div>
         <div class="pull-right">  </div>
@@ -65,63 +64,28 @@
                 
             
                 <ul class="nav nav-list">
-                    <li class="nav-header">Dokumentacja techniczna</li>
-                                
-      <li>
-    
-                          <a href="usecase.html" title="Diagram przypadków użycia">
-          <i class="none"></i>
-        Diagram przypadków użycia</a>
-            </li>
-                  
-      <li class="active">
-    
-            <a href="#"><i class="none"></i>Specyfikacja wymagań</a>
-          </li>
-                  
-      <li>
-    
-                          <a href="concept.html" title="Koncepcja rozwiązania i decyzje projektowe">
-          <i class="none"></i>
-        Koncepcja rozwiązania i decyzje projektowe</a>
-            </li>
-                  
-      <li>
-    
-                          <a href="class_diagrams.html" title="Diagramy klas">
-          <i class="none"></i>
-        Diagramy klas</a>
-            </li>
-                  
-      <li>
-    
-                          <a href="security.html" title="Analiza bezpieczeństwa">
-          <i class="none"></i>
-        Analiza bezpieczeństwa</a>
-            </li>
-                              <li class="nav-header">Dokumentacja procesowa</li>
-                                
-      <li>
-    
-                          <a href="minutes.html" title="Minutki">
-          <i class="none"></i>
-        Minutki</a>
-            </li>
-                              <li class="nav-header">Dokumentacja projektu</li>
-                                                                                                                                                                                                                                                                                                                                              
+                    <li class="nav-header">Dokumentacja projektu</li>
+                                                                                                                                                                                                                                                                                                                            
       <li>
     
                           <a href="project-info.html" title="Informacja o projekcie">
           <i class="icon-chevron-right"></i>
         Informacja o projekcie</a>
                   </li>
-                                                                    
+                                                                              
       <li>
     
                           <a href="project-reports.html" title="Raporty projektu">
-          <i class="icon-chevron-right"></i>
+          <i class="icon-chevron-down"></i>
         Raporty projektu</a>
-                  </li>
+                    <ul class="nav nav-list">
+                      
+      <li class="active">
+    
+            <a href="#"><i class="none"></i>Maven Surefire Report</a>
+          </li>
+              </ul>
+        </li>
             </ul>
                 
             
@@ -142,7 +106,7 @@
                 
         <div id="bodyColumn"  class="span9" >
                                   
-            <div class="section"><h2>Wymagania funkcjonalne<a name="Wymagania_funkcjonalne"></a></h2><p>aplikacja kliencka:</p><ul><li>prezentowanie aktualnych i archiwalnych notowa&#x144; gie&#x142;dowych akcji</li><li>mo&#x17c;liwo&#x15b;&#x107; wyboru sp&#xf3;&#x142;ek, kt&#xf3;rych notowania maj&#x105; by&#x107; &#x15b;ledzone i prezentowane</li><li>uwierzytelnianie u&#x17c;ytkownik&#xf3;w</li><li>zarz&#x105;dzanie kontami u&#x17c;ytkownik&#xf3;w przez administratora</li></ul><p>provider:</p><ul><li>konfigurowanie &#x17a;r&#xf3;d&#x142;a danych aktualnych notowa&#x144; gie&#x142;dowych</li><li>konfigurowanie &#x15b;ledzonych sp&#xf3;&#x142;ek gie&#x142;dowych</li></ul></div><div class="section"><h2>Wymagania niefunkcjonalne<a name="Wymagania_niefunkcjonalne"></a></h2><ul><li>wdro&#x17c;enie aplikacji w systemie chmurowym PaaS CloudFoundry</li><li>lu&#x17a;ne powi&#x105;zanie aplikacji klienckiej i providera, komunikacja przez JMS</li><li>obs&#x142;uga wielu niezale&#x17c;nych tenant&#xf3;w </li><li>interfejs webowy aplikacji klienckiej, zgodny ze standardami internetowymi</li></ul></div>
+            
                   </div>
             </div>
           </div>
