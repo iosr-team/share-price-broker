@@ -213,10 +213,10 @@ public class UserServiceWithTenantImplTest {
         // verify results
         verify(entityManager, atLeast(1)).createQuery(anyString());
         verify(query, atLeast(1)).getResultList();
-        assertNotNull(userList);
-        assertTrue(userList.size() > 0);
-        assertEquals(ROLE_NAME, userList.get(0).getRole().getName());
-        assertEquals(TENANT_NAME, userList.get(0).getTenant().getName());
+        assertNotNull(userListWhenNotSuperuser);
+        assertTrue(userListWhenNotSuperuser.size() > 0);
+        assertEquals(ROLE_NAME, userListWhenNotSuperuser.get(0).getRole().getName());
+        assertEquals(TENANT_NAME, userListWhenNotSuperuser.get(0).getTenant().getName());
 
         // stub
         when(tenantMock.isSuperuser()).thenReturn(true);
@@ -227,7 +227,7 @@ public class UserServiceWithTenantImplTest {
         // verify results
         verify(entityManager, atLeast(1)).createQuery(anyString());
         verify(query, atLeast(1)).getResultList();
-        assertNotNull(userList);
-        assertTrue(userList.isEmpty());
+        assertNotNull(userListWhenNotExistingRole);
+        assertTrue(userListWhenNotExistingRole.isEmpty());
     }
 }

@@ -22,6 +22,14 @@ public class StockQuoteServiceWithTenantImpl extends StockQuoteServiceImpl {
     @Autowired
     private TenantResolverService tenantResolverService;
 
+    public TenantResolverService getTenantResolverService() {
+        return tenantResolverService;
+    }
+
+    public void setTenantResolverService(TenantResolverService tenantResolverService) {
+        this.tenantResolverService = tenantResolverService;
+    }
+
     @Override
     @Transactional
     public StockQuote getStockQuote(Long id) {
