@@ -1,0 +1,46 @@
+ -----
+ Analiza bezpieczeństwa
+ -----
+ Szymon Gut, Bartłomiej Puto
+ -----
+ 
+
+Analiza bezpieczeństwa
+   
+
+* Infrastruktura
+
+	Aplikacja wykorzystuje następujące usługi: system wiadomości RabbitMQ oraz bazę danych PostgreSQL.
+	Autoryzacja dostępu do usług osiągana jest poprzez przydzielenie praw aplikacjom wykonywanych w obrębie tego samego konta CloudFoundry, co usługi.
+	Bezpieczeństwo komunikacji zapewnia CloudFoundry. 
+
+	CloudFoundry PaaS nie udostępnia możliwości konfiguracji serwera HTTP.
+
+* Aplikacja internetowa
+
+** Uwierzytelnianie użytkowników
+
+	Uwierzytelnianie użytkowników przeprowadzane jest przy pomocy narzędzia Spring Security poprzez protokół HTTP.
+	Hasła w bazie danych są przechowywane zahaszowane.
+  
+** Rozdział ról
+
+	Użytkownicy systemu mają przypisane następujące role:
+	
+	* superuser - administrator systemu
+	
+	* administrator - administrator tenanta
+	
+	* użytkownik - zwykły użytkownik należący do określonego tenanta
+	
+	
+	Prawa dostępu do poszczególnych funkcji aplikacji internetowej są weryfikowane zarówno w warstwie logiki aplikacji
+	jak i przez przechwytywacza kontrolującego dostęp do URL'i w zależności od roli użytkownika
+  
+** Obrona przed typowymi atakami
+
+	* SQL Injection - aplikacja nie wykonuje bezpośrednio zapytań SQL do bazy, zamiast tego korzysta z parametryzowanych zapytań JPQL
+	
+	* CSRF - wszystkie zapytania modyfikujące stan aplikacji przeprowadzane są metodą HTTP POST
+  
+

@@ -17,6 +17,7 @@
       	<item name="Specyfikacja wymagań" href="requirements.html" />
       	<item name="Koncepcja rozwiązania i decyzje projektowe" href="concept.html" />
 		<item name="Diagramy klas" href="class_diagrams.html" />
+		<item name="Analiza bezpieczeństwa" href="security.html" />
     </menu>
     
     <menu name="Dokumentacja procesowa">
