@@ -29,7 +29,7 @@ public class StockQuoteListener implements MessageListener {
 	@Autowired
 	private StockCompanyService stockCompanyService;
 
-	@Autowired
+    @Autowired
 	@Qualifier("stockQuoteService")
 	private StockQuoteService stockQuoteService;
 
@@ -45,7 +45,7 @@ public class StockQuoteListener implements MessageListener {
 			StockQuote stockQuote = new StockQuote();
 
 			stockQuote.setStockCompany(stockCompanyService
-					.getStockCompany(parts[0]));
+                    .getStockCompany(parts[0]));
 			stockQuote.setValue(Double.parseDouble(parts[1]));
 			stockQuote.setDate(new SimpleDateFormat(DATE_FORMAT).parse(parts[2]));
 
@@ -82,4 +82,8 @@ public class StockQuoteListener implements MessageListener {
 	public void setStockCompanyService(StockCompanyService stockCompanyService) {
 		this.stockCompanyService = stockCompanyService;
 	}
+
+    public void setStockQuoteService(StockQuoteService stockQuoteService) {
+        this.stockQuoteService = stockQuoteService;
+    }
 }
