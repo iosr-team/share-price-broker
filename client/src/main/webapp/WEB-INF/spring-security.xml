@@ -15,14 +15,13 @@
         <form-login login-page="/login" default-target-url="/"
             authentication-failure-url="/loginfailed" />
         <logout logout-success-url="/logout" />
-        <session-management invalid-session-url="/sessiontimeout" >
-            <concurrency-control max-sessions="1" />
+        <session-management invalid-session-url="/" >
         </session-management>
     </http>
-    <!-- 
+
     <beans:bean id="sessionFixationProtectionStrategy" 
     	class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" />
-     -->
+
 	<beans:bean id="daoAuthenticationProvider"
  		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
   		<beans:property name="userDetailsService" ref="userDetailsService"/>
