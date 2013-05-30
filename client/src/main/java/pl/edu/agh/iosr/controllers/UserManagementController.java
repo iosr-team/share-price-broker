@@ -22,19 +22,32 @@ public class UserManagementController extends AbstractUserController{
 	
 	private final Logger log = LoggerFactory.getLogger(UserManagementController.class);
 
+    private static final String LIST_USER_VIEW = "user/list";
+    private static final String LIST_USER_REDIRECT_VIEW = "redirect:/user/list";
+    private static final String LIST_USER_SUCCESS_REDIRECT_VIEW = "redirect:/user/list?succMsg=";
+    private static final String LIST_USER_ERROR_REDIRECT_VIEW = "redirect:/user/list?errorMsg=";
+
+    private static final String ADD_USER_VIEW = "user/add";
+    private static final String ADD_USER_ERROR_REDIRECT_VIEW = "redirect:/user/add?errorMsg=";
+
+    private static final String EDIT_USER_VIEW = "user/edit";
+    private static final String EDIT_USER_REDIRECT_VIEW = "redirect:/user/edit/";
+
+    private static final String ERROR_MSG_PARAM = "?errorMsg=";
+
 	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
 	public String list(ModelMap model){
 		
 		List<UserEntity> userList = userService.getAllUsers();
 		
 		model.put("userList", userList);
-		return "user/list";
+		return LIST_USER_VIEW;
 	}
 
     @RequestMapping(value = "/user/add", method = RequestMethod.GET)
     public String addForm(ModelMap model) {
         model.put("userCommand", prepareUserCommand(null,null,Role.ROLE_USER,null, prepareRoleMap(false,true)) );
-        return "user/add";
+        return ADD_USER_VIEW;
     }
 
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
@@ -53,12 +66,12 @@ public class UserManagementController extends AbstractUserController{
 
             user = userService.createUser(user);
             String succMsg = "User creation succeeds ";
-            return "redirect:/user/list?succMsg=" + succMsg;
+            return LIST_USER_SUCCESS_REDIRECT_VIEW + succMsg;
         } else {
             String errorMsg = "User creation fails already same user name exists please try "
                     + "with different user name";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/user/add?errorMsg=" + errorMsg;
+            return ADD_USER_ERROR_REDIRECT_VIEW + errorMsg;
         }
     }
 
@@ -79,9 +92,9 @@ public class UserManagementController extends AbstractUserController{
             }
         }
         if(errorMsg.equals("")){
-            return "redirect:/user/list";
+            return LIST_USER_REDIRECT_VIEW;
         }
-        return "redirect:/user/list?errorMsg="+errorMsg;
+        return LIST_USER_ERROR_REDIRECT_VIEW + errorMsg;
     }
 
     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.GET)
@@ -93,7 +106,7 @@ public class UserManagementController extends AbstractUserController{
         if(user == null){
             String errorMsg = "No such user";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/user/list?errorMsg=" + errorMsg;
+            return LIST_USER_ERROR_REDIRECT_VIEW + errorMsg;
         }
 
         model.put("userCommand",
@@ -103,7 +116,7 @@ public class UserManagementController extends AbstractUserController{
                         user.getRole().getName(),
                         null,
                         prepareRoleMap(false,true)));
-        return "user/edit";
+        return EDIT_USER_VIEW;
     }
 
     @RequestMapping(value = "/user/edit/{id}", method = RequestMethod.POST)
@@ -118,7 +131,7 @@ public class UserManagementController extends AbstractUserController{
         if (user == null) {
             String errorMsg = "Cannot modify user!";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/user/edit/"+id+"?errorMsg=" + errorMsg;
+            return EDIT_USER_REDIRECT_VIEW + id + ERROR_MSG_PARAM + errorMsg;
         }
         try{
             user.setLogin(userCommand.getLogin());
@@ -135,9 +148,9 @@ public class UserManagementController extends AbstractUserController{
             log.error("Exception while updating user",e);
             String errorMsg = "Cannot modify user!";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/user/edit/"+id+"?errorMsg=" + errorMsg;
+            return EDIT_USER_REDIRECT_VIEW + id + ERROR_MSG_PARAM + errorMsg;
         }
         String succMsg = "Tenant successfully edited ";
-        return "redirect:/user/list?succMsg=" + succMsg;
+        return LIST_USER_SUCCESS_REDIRECT_VIEW + succMsg;
     }
 }

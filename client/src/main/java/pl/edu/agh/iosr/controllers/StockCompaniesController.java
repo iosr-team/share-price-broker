@@ -26,6 +26,14 @@ public class StockCompaniesController {
 	private final Logger log = LoggerFactory
 			.getLogger(StockQuoteController.class);
 
+    private static final String OBSERVE_STOCK_COMPANY_VIEW = "stockCompany/observe";
+
+    private static final String STOCK_COMPANIES_REDIRECT_VIEW = "redirect:/stockCompanies";
+
+    private static final String STOCK_COMPANY_HISTORY_VIEW = "stockCompany/history";
+
+    private static final String EDIT_STOCK_COMPANY_VIEW = "stockCompany/edit";
+
 	@Autowired
 	private StockCompanyService stockCompanyService;
 
@@ -56,13 +64,13 @@ public class StockCompaniesController {
 		model.put("observedStockCompanies", observed);
 		model.put("unobservedStockCompanies", unobserved);
 
-		return "stockCompany/observe";
+		return OBSERVE_STOCK_COMPANY_VIEW;
 	}
 
 	String manageCompaniesBySuperuser(ModelMap model) {
 		model.put("stockCompanies", stockCompanyService.getAllStockCompanies());
 		model.put("newStockCompany", new StockCompany());
-		return "stockCompany/edit";
+		return EDIT_STOCK_COMPANY_VIEW;
 	}
 
 	@RequestMapping(value = "/stockCompanies", method = RequestMethod.GET)
@@ -94,7 +102,7 @@ public class StockCompaniesController {
 				model.addAttribute("errorMsg", errorMsg);
 			}
 		}
-		return "redirect:/stockCompanies";
+		return STOCK_COMPANIES_REDIRECT_VIEW;
 	}
 	
 	@RequestMapping(value = "/stockCompanies/observe", method = RequestMethod.POST)
@@ -117,7 +125,7 @@ public class StockCompaniesController {
 		}
 		tenant.setObservedStockIndicies(observedStockCompanies);
 		tenantService.merge(tenant);
-		return "redirect:/stockCompanies";
+		return STOCK_COMPANIES_REDIRECT_VIEW;
 	}
 
 	@RequestMapping(value = "/stockCompanies/update", method = RequestMethod.POST)
@@ -129,7 +137,7 @@ public class StockCompaniesController {
 			stockCompanyService.createStockCompany(stockCompany);
 		else
 			stockCompanyService.merge(stockCompany);
-		return "redirect:/stockCompanies";
+		return STOCK_COMPANIES_REDIRECT_VIEW;
 	}
 
     @RequestMapping(value = "/stockCompanies/history/{symbol}", method = RequestMethod.GET)
@@ -137,7 +145,7 @@ public class StockCompaniesController {
         @PathVariable String symbol){
 
         model.put("companySymbol",symbol);
-        return "stockCompany/history";
+        return STOCK_COMPANY_HISTORY_VIEW;
     }
 
     @RequestMapping(value="/stockCompanies/data/{symbol}", method=RequestMethod.GET)

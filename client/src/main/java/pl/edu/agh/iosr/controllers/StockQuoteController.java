@@ -17,6 +17,8 @@ public class StockQuoteController {
 	
 	//private final Logger log = LoggerFactory.getLogger(StockQuoteController.class);
 
+    private static final String LIST_STOCK_QUTE_VIEW = "stockQuote/list";
+
     @Autowired
     @Qualifier("stockQuoteServiceWithTenant")
     private StockQuoteService stockQuoteService;
@@ -27,6 +29,6 @@ public class StockQuoteController {
 		List<StockQuote> stockQuoteList = stockQuoteService.getAllStockQuotes();
 		
 		model.put("stockQuoteList", stockQuoteList);
-		return "stockQuote/list";
+		return LIST_STOCK_QUTE_VIEW;
     }
 }

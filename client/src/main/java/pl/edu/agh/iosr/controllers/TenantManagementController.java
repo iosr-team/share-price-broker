@@ -16,7 +16,19 @@ import pl.edu.agh.iosr.services.TenantService;
 public class TenantManagementController {
 	
 	private final Logger log = LoggerFactory.getLogger(TenantManagementController.class);
-	
+
+    private static final String EDIT_TENANT_VIEW = "tenant/edit";
+    private static final String EDIT_TENANT_REDIRECT_VIEW = "redirect:/tenant/edit/";
+
+    private static final String ADD_TENANT_VIEW = "tenant/add";
+
+    private static final String LIST_TENANT_VIEW = "tenant/list";
+    private static final String LIST_TENANT_REDIRECT_VIEW = "redirect:/tenant/list";
+    private static final String LIST_TENANT_SUCCESS_REDIRECT_VIEW = "redirect:/tenant/list?succMsg=";
+    private static final String LIST_TENANT_ERROR_REDIRECT_VIEW = "redirect:/tenant/add?errorMsg=";
+
+    private static final String ERROR_MSG_PARAM = "?errorMsg=";
+
 	@Autowired
 	private TenantService tenantService;
 	
@@ -25,7 +37,7 @@ public class TenantManagementController {
 		
 		List<Tenant> tenantList = tenantService.getAllTenants();
 		model.put("tenantList", tenantList);
-		return "tenant/list";
+		return LIST_TENANT_VIEW;
 	}
 	
 	@RequestMapping(value = "/tenant/edit/{id}", method = RequestMethod.GET)
@@ -34,7 +46,7 @@ public class TenantManagementController {
 		
 		Tenant tenant = tenantService.getTenantById(id);
 		model.put("tenant", tenant);
-		return "tenant/edit";
+		return EDIT_TENANT_VIEW;
 	}
 
     @RequestMapping(value = "/tenant/edit/{id}", method = RequestMethod.POST)
@@ -47,19 +59,19 @@ public class TenantManagementController {
         if (tenant == null) {
             String errorMsg = "Cannot modify tenant!";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/tenant/edit"+id+"?errorMsg=" + errorMsg;
+            return EDIT_TENANT_REDIRECT_VIEW + id + ERROR_MSG_PARAM + errorMsg;
         }
 
         tenant = tenantService.merge(tenantCommand);
         String succMsg = "Tenant successfully edited ";
-        return "redirect:/tenant/list?succMsg=" + succMsg;
+        return LIST_TENANT_SUCCESS_REDIRECT_VIEW + succMsg;
     }
 	
 	@RequestMapping(value = "/tenant/add", method = RequestMethod.GET)
 	public String add(ModelMap model){
 		
 		model.put("tenant", new Tenant());
-		return "tenant/add";
+		return ADD_TENANT_VIEW;
 	}
 	
 	@RequestMapping(value = "/tenant/add", method = RequestMethod.POST)
@@ -71,11 +83,11 @@ public class TenantManagementController {
             tenantCommand.setEnabled(true);
             tenant = tenantService.createTenant(tenantCommand);
             String succMsg = "Tenant registration succeeds ";
-            return "redirect:/tenant/list?succMsg=" + succMsg;
+            return LIST_TENANT_SUCCESS_REDIRECT_VIEW + succMsg;
         } else {
             String errorMsg = "Tenant registration failed - already same tenant name exists!";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/tenant/add?errorMsg=" + errorMsg;
+            return LIST_TENANT_ERROR_REDIRECT_VIEW + errorMsg;
         }
     }
 
@@ -96,8 +108,8 @@ public class TenantManagementController {
             }
         }
         if(errorMsg.equals("")){
-            return "redirect:/tenant/list";
+            return LIST_TENANT_REDIRECT_VIEW;
         }
-        return "redirect:/tenant/list?errorMsg="+errorMsg;
+        return LIST_TENANT_ERROR_REDIRECT_VIEW + errorMsg;
     }
 }

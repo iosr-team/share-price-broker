@@ -22,19 +22,31 @@ public class AdministratorManagementController extends AbstractUserController{
 	
 	private final Logger log = LoggerFactory.getLogger(AdministratorManagementController.class);
 
+    private static final String LIST_ADMINISTRATOR_VIEW = "administrator/list";
+    private static final String LIST_ADMINISTRATOR_REDIRECT_VIEW = "redirect:/administrator/list";
+    private static final String LIST_ADMINISTRATOR_SUCCESS_REDIRECT_VIEW = "redirect:/administrator/list?succMsg=";
+    private static final String LIST_ADMINISTRATOR_ERROR_REDIRECT_VIEW = "redirect:/administrator/list?errorMsg=";
+
+    private static final String ADD_ADMINISTRATOR_ERROR_REDIRECT_VIEW = "redirect:/administrator/add?errorMsg=";
+
+    private static final String EDIT_ADMINISTRATOR_VIEW = "administrator/edit";
+    private static final String EDIT_ADMINISTRATOR_REDIRECT_VIEW = "redirect:/administrator/edit/";
+
+    private static final String ERROR_MSG_PARAM = "?errorMsg=";
+
 	@RequestMapping(value = "/administrator/list", method = RequestMethod.GET)
 	public String list(ModelMap model){
 		
 		List<UserEntity> administratorList = userService.getAllUsersOfRole("ROLE_ADMIN");
 		
 		model.put("administratorList", administratorList);
-		return "administrator/list";
+		return LIST_ADMINISTRATOR_VIEW;
 	}
 
     @RequestMapping(value = "/administrator/add", method = RequestMethod.GET)
     public String signUp(ModelMap model) {
         model.put("userCommand", prepareUserCommand(null,null,Role.ROLE_ADMIN,prepareTenantMap(false), null) );
-        return "administrator/add";
+        return LIST_ADMINISTRATOR_VIEW;
     }
 
     @RequestMapping(value = "/administrator/add", method = RequestMethod.POST)
@@ -53,12 +65,12 @@ public class AdministratorManagementController extends AbstractUserController{
 
             user = userService.createUser(user);
             String succMsg = "Administrator creation succeeds ";
-            return "redirect:/administrator/list?succMsg=" + succMsg;
+            return LIST_ADMINISTRATOR_SUCCESS_REDIRECT_VIEW + succMsg;
         } else {
             String errorMsg = "Administrator creation fails already same user name exists please try "
                     + "with different user name";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/administrator/add?errorMsg=" + errorMsg;
+            return ADD_ADMINISTRATOR_ERROR_REDIRECT_VIEW + errorMsg;
         }
     }
 
@@ -79,9 +91,9 @@ public class AdministratorManagementController extends AbstractUserController{
             }
         }
         if(errorMsg.equals("")){
-            return "redirect:/administrator/list";
+            return LIST_ADMINISTRATOR_REDIRECT_VIEW;
         }
-        return "redirect:/administrator/list?errorMsg="+errorMsg;
+        return LIST_ADMINISTRATOR_ERROR_REDIRECT_VIEW + errorMsg;
     }
 
     @RequestMapping(value = "/administrator/edit/{id}", method = RequestMethod.GET)
@@ -92,7 +104,7 @@ public class AdministratorManagementController extends AbstractUserController{
 
         if(administrator == null){
             String errorMsg = "No such user";
-            return "redirect:/administrator/list?succMsg=" + errorMsg;
+            return LIST_ADMINISTRATOR_SUCCESS_REDIRECT_VIEW + errorMsg;
         }
 
         model.put("userCommand",
@@ -102,7 +114,7 @@ public class AdministratorManagementController extends AbstractUserController{
                         administrator.getRole().getName(),
                         prepareTenantMap(false),
                         null));
-        return "administrator/edit";
+        return EDIT_ADMINISTRATOR_VIEW;
     }
 
     @RequestMapping(value = "/administrator/edit/{id}", method = RequestMethod.POST)
@@ -117,7 +129,7 @@ public class AdministratorManagementController extends AbstractUserController{
         if (administrator == null) {
             String errorMsg = "Cannot modify administrator!";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/administrator/edit/"+id+"?errorMsg=" + errorMsg;
+            return EDIT_ADMINISTRATOR_REDIRECT_VIEW + id + ERROR_MSG_PARAM + errorMsg;
         }
         try{
             administrator.setLogin(userCommand.getLogin());
@@ -133,9 +145,9 @@ public class AdministratorManagementController extends AbstractUserController{
             log.error("Exception while updating administrator",e);
             String errorMsg = "Cannot modify administrator!";
             model.addAttribute("errorMsg", errorMsg);
-            return "redirect:/administrator/edit/"+id+"?errorMsg=" + errorMsg;
+            return EDIT_ADMINISTRATOR_REDIRECT_VIEW + id + ERROR_MSG_PARAM + errorMsg;
         }
         String succMsg = "Tenant successfully edited ";
-        return "redirect:/administrator/list?succMsg=" + succMsg;
+        return LIST_ADMINISTRATOR_SUCCESS_REDIRECT_VIEW + succMsg;
     }
 }
