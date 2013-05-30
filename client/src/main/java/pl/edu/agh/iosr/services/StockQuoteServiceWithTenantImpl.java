@@ -74,7 +74,7 @@ public class StockQuoteServiceWithTenantImpl extends StockQuoteServiceImpl {
             return super.getStockQuotesForCompany(companySymbol);
         }
 
-        Query query = getEntityManager().createQuery("from StockQuote s where s.stockCompany.symbol = :companySymbol and s.tenant.name = :tenantName");
+        Query query = getEntityManager().createQuery("from StockQuote s where s.stockCompany.symbol = :companySymbol and s.tenant.name = :tenantName order by date asc");
         query.setParameter("companySymbol",companySymbol);
         query.setParameter("tenantName", myTenant.getName());
         List<StockQuote> resultList = (List<StockQuote>) query.getResultList();
