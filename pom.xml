@@ -87,7 +87,15 @@
         		    <outputEncoding>UTF-8</outputEncoding> 
         		    <outputDirectory>${project.basedir}/site</outputDirectory>
         		    <locales>pl</locales>
+					
+					<reportPlugins>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>findbugs-maven-plugin</artifactId>
+						</plugin>
+					</reportPlugins>
         		</configuration>
+
       		</plugin>
             
         </plugins>
