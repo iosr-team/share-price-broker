@@ -27,6 +27,7 @@ public class AdministratorManagementController extends AbstractUserController{
     private static final String LIST_ADMINISTRATOR_SUCCESS_REDIRECT_VIEW = "redirect:/administrator/list?succMsg=";
     private static final String LIST_ADMINISTRATOR_ERROR_REDIRECT_VIEW = "redirect:/administrator/list?errorMsg=";
 
+    private static final String ADD_ADMINISTRATOR_VIEW = "administrator/add";
     private static final String ADD_ADMINISTRATOR_ERROR_REDIRECT_VIEW = "redirect:/administrator/add?errorMsg=";
 
     private static final String EDIT_ADMINISTRATOR_VIEW = "administrator/edit";
@@ -46,7 +47,7 @@ public class AdministratorManagementController extends AbstractUserController{
     @RequestMapping(value = "/administrator/add", method = RequestMethod.GET)
     public String signUp(ModelMap model) {
         model.put("userCommand", prepareUserCommand(null,null,Role.ROLE_ADMIN,prepareTenantMap(false), null) );
-        return LIST_ADMINISTRATOR_VIEW;
+        return ADD_ADMINISTRATOR_VIEW;
     }
 
     @RequestMapping(value = "/administrator/add", method = RequestMethod.POST)
