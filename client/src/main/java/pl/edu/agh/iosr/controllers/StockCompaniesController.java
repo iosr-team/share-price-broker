@@ -123,8 +123,9 @@ public class StockCompaniesController {
 				model.addAttribute("errorMsg", errorMsg);
 			}
 		}
-		tenant.setObservedStockIndicies(observedStockCompanies);
+		tenant.setObservedStockCompanies(observedStockCompanies);
 		tenantService.merge(tenant);
+		tenantService.updateQueueBindings(tenant);
 		return STOCK_COMPANIES_REDIRECT_VIEW;
 	}
 

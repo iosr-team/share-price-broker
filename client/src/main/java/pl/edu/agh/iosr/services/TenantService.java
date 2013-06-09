@@ -12,5 +12,7 @@ public interface TenantService {
     Tenant createTenant(Tenant tenant);
     void removeTenantById(Long id);
     Tenant merge(Tenant tenant);
+    
+    void updateQueueBindings(Tenant tenant);
 }
 

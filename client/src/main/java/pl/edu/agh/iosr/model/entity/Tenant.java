@@ -60,7 +60,7 @@ public class Tenant {
 		return observedStockCompanies;
 	}
 
-	public void setObservedStockIndicies(List<StockCompany> observedStockCompanies) {
+	public void setObservedStockCompanies(List<StockCompany> observedStockCompanies) {
 		this.observedStockCompanies = observedStockCompanies;
 	}
 	

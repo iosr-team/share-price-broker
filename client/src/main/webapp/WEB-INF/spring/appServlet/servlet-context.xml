@@ -56,6 +56,19 @@
     <rabbit:queue name="UJ"/>
     <rabbit:queue name="PK"/>
 
+	<!--  initial bindings -->
+	<rabbit:direct-exchange name="stock-broker">
+		<rabbit:bindings>
+            <!--queue for tenant: AGH-->
+			<rabbit:binding queue="AGH"	key="GOOG"/>
+            <rabbit:binding queue="AGH"	key="NVDA"/>
+
+            <!--queue tenant: UJ-->
+            <rabbit:binding queue="UJ"	key="GOOG"/>
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+
+
     <rabbit:listener-container connection-factory="connectionFactory">
         <rabbit:listener queues="AGH" ref="aghStockQuoteListener"/>
         <rabbit:listener queues="UJ" ref="ujStockQuoteListener"/>
