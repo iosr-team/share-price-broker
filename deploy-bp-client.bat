@@ -1,0 +1,1 @@
+mvn clean package -Dmaven.test.skip=true && cd client\target && vmc push bp_client && cd ..\..\

@@ -71,7 +71,7 @@
          
          <div class="common-form">
          <h2>add or edit Stock Company</h2>
-	     <form:form modelAttribute="newStockCompany" action="${pageContext.request.contextPath}/stockCompanies/update" method="POST" id="addCompanyForm">
+	     <form:form modelAttribute="newStockCompany" action="${pageContext.request.contextPath}/stockCompanies/update" method="POST" id="addCompanyForm" htmlEscape="true" >
 	         <div>
 	              <label>Symbol</label>
 	              <form:input path="symbol" cssClass="textbox-a" id="symbol" value="${ symbol }"/>
