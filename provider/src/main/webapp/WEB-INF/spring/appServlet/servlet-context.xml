@@ -48,6 +48,8 @@
 	<rabbit:queue name="AGH"/>
 	<rabbit:queue name="UJ"/>
 	<rabbit:queue name="PK"/>
+	
+	<rabbit:queue name="test"/>
 
     <!--key = stock index-->
 	<rabbit:direct-exchange name="stock-broker">
@@ -58,6 +60,9 @@
 
             <!--queue tenant: UJ-->
             <rabbit:binding queue="UJ"	key="GOOG"/>
+            
+            <!-- performance test -->
+            <rabbit:binding queue="test" key="test"/>
 		</rabbit:bindings>
 	</rabbit:direct-exchange>
 	

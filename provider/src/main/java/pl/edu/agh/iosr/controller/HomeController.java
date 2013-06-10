@@ -1,11 +1,14 @@
 package pl.edu.agh.iosr.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -50,4 +53,16 @@ public class HomeController {
 
         return home(model);
     }
+    
+    @RequestMapping(value = "/test/{nums}", method=RequestMethod.GET)
+    public String performanceTest(Model model, @PathVariable String nums) {
+    	List<TestResult> results = new ArrayList<TestResult>();
+    	AmqpPerformanceTest tester = new AmqpPerformanceTest(amqpTemplate);
+    	for(String num : nums.split(","))
+    		results.add(tester.testNum(Integer.parseInt(num)));
+    	model.addAttribute("results", results);
+    	return "testResults";
+    }
+    
+
 }
