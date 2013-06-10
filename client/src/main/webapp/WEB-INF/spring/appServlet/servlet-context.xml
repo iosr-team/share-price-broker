@@ -33,7 +33,7 @@
         </beans:bean>
     </mvc:interceptors>
 
-	<context:component-scan base-package="pl.edu.agh.iosr" />
+	<!-- <context:component-scan base-package="pl.edu.agh.iosr" /> -->
 
     <!-- RabbitMQ -->
 

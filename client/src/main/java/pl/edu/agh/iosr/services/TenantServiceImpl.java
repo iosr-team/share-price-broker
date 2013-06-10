@@ -1,5 +1,6 @@
 package pl.edu.agh.iosr.services;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,15 +8,26 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.connection.Connection;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import pl.edu.agh.iosr.model.entity.StockCompany;
 import pl.edu.agh.iosr.model.entity.Tenant;
+import pl.edu.agh.iosr.msg.StockQuoteListener;
+
+import com.rabbitmq.client.Channel;
+
+
 
 @Service
 public class TenantServiceImpl implements TenantService {
@@ -26,10 +38,7 @@ public class TenantServiceImpl implements TenantService {
 
     public EntityManager getEntityManager() {
         return entityManager;
-    }
-
-    @Autowired
-    AmqpAdmin admin;
+    }  
     
     @PersistenceContext
     public void setEntityManager(EntityManager entityManager) {
@@ -88,18 +97,46 @@ public class TenantServiceImpl implements TenantService {
         return getEntityManager().merge(tenant);
     }
     
+    
+    @Autowired AmqpAdmin admin;
+    @Autowired ConnectionFactory connectionFactory;
+    @Autowired StockCompanyService stockCompanyService;
+    @Autowired StockQuoteService stockQuoteService;
+    
     @Override
     public void updateQueueBindings(Tenant tenant) {   	    	
     	String queueName = tenant.getName();
-    	admin.deleteQueue(queueName); // TODO: co robi purgeQueue ?
+    	admin.deleteQueue(queueName);
     	Queue queue = new Queue(queueName);
     	admin.declareQueue(queue);
     	
     	DirectExchange exchange = new DirectExchange(EXCHANGE_NAME);
+    	admin.declareExchange(exchange);
+    
+    	
+    	SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+    	container.setConnectionFactory(connectionFactory);
+    	container.setQueueNames(queueName);
+    	container.setMessageListener(/*new MessageListenerAdapter(*/
+    			new StockQuoteListener(tenant.getName(), this, stockCompanyService, stockQuoteService));
+
     	
     	for(StockCompany company : tenant.getObservedStockCompanies()) {
     		String routingKey = company.getSymbol();
-    		admin.declareBinding(BindingBuilder.bind(queue).to(exchange).with(routingKey));
+    		Binding binding = BindingBuilder.bind(queue).to(exchange).with(routingKey);
+    		admin.declareBinding(binding);
+//    		System.out.println("NEW BINDING: " + binding);
     	}
+    	
+    	AmqpTemplate template = new RabbitTemplate(connectionFactory);
+    	template.convertAndSend(queueName, "2342#GOOG#dupa");
+    }
+    
+    public void unsubscribe(String queuename, String topic) throws IOException
+    {
+       Connection connection = connectionFactory.createConnection();
+       Channel channel = connection.createChannel(true);
+       channel.exchangeDeclarePassive(EXCHANGE_NAME);
+       channel.queueUnbind(queuename, EXCHANGE_NAME, topic);
     }
 }

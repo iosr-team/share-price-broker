@@ -27,7 +27,7 @@ import pl.edu.agh.iosr.services.UserServiceImpl;
 @EnableTransactionManagement
 @ComponentScan(basePackageClasses = {UserServiceImpl.class,
         LoginController.class, UserEntity.class })
-@ImportResource("/WEB-INF/spring-security.xml")
+@ImportResource({"/WEB-INF/spring-security.xml","/WEB-INF/spring/appServlet/servlet-context.xml" })
 public class ComponentConfig {
 
     @Autowired private DataSourceConfiguration dataSourceConfiguration;
