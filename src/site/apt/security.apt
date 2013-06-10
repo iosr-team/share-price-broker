@@ -5,7 +5,7 @@
  -----
  
 
-Analiza bezpieczeństwa
+Analiza i testy bezpieczeństwa
    
 
 * Infrastruktura
@@ -42,5 +42,138 @@ Analiza bezpieczeństwa
 	* SQL Injection - aplikacja nie wykonuje bezpośrednio zapytań SQL do bazy, zamiast tego korzysta z parametryzowanych zapytań JPQL
 	
 	* CSRF - wszystkie zapytania modyfikujące stan aplikacji przeprowadzane są metodą HTTP POST
-  
+
+* Testy bezpieczeństwa
+
+** Ograniczenia
+
+    Z uwagi na fakt, że środowisko w którym uruchomiona jest aplikaca nie pozwala nam na pełny dostęp, możemy przeprowadzić
+    tylko niektóre testy bezpieczeństwa - np. skanowanie aplikacji webowej. Poza tym musimy w dużej mierze polegać na
+    zabezpieczeniach dostarczonych przez Cloud Foundry.
+
+** Przegląd narzędzi do testowania bezpieczeństwa
+
+*** Nikto
+
+    * narzędzie Open Sourcowe (GPL)
+
+    * skanuje serwer w poszukiwaniu typowych luk bezpieczeństwa
+
+    * pozwala na generowanie czytelnych raportów
+
+    * niektóre z użytecznych funkcjonalności
+
+        * SSL Support
+
+        * Full HTTP proxy support
+
+        * Checks for outdated server components
+
+        * Scan multiple ports on a server, or multiple servers via input file
+
+        * Subdomain guessing
+
+        * Mutation techniques to "fish" for content on web servers
+
+        * Reports "unusual" headers seen
+
+        * Mutation techniques to "fish" for content on web servers
+
+        * Apache and cgiwrap username enumeration
+
+
+    Użycie narzędzie stosunkowo proste, sprowadza się do wywołania polecenia:
+
+    perl nikto.pl -host http://iosr_client.cloudfoundry.com/ -output nikto_iosr_client_report.html
+
+*** Nessus
+
+    * profesionalne narzędze do testowania bezpieczeństwa aplikacji
+
+    * nie jest darmowe, ale pozwala na korzystanie z dużej części funkcjonalności przez 15 dni za darmo
+
+    * interfejs dostępny z poziomu przeglądarki
+
+    * po zainstalowaniu narzędzie ściąga odpowiednie wtyczki
+
+    * mnóstwo opcji konfiguracji
+
+    * przejrzysty interfejs
+
+    * ciekawe funkcjonalności:
+
+        * tworzenie screenshotów aplikacji
+
+        * tworzenie polityk skanów
+
+        * uzupełnianie ‘login credentials’ różnego typu (np. poprzez formularz HTML, ssh, itp)
+
+        * wykluczanie konkretnych linków z przeglądania
+
+        * podawanie głęgokości skanu
+
+    * SUPER NARZĘDZIE!!!
+
+*** Exploit-Me
+
+    * zestaw wtyczek do Firefoxa
+
+    * sprawdza podatności na ataki XSS, SQL injection, dostęp do zasobów bez autoryzacji
+
+    * generowanie czytelnych raportów
+
+** Wygenerowane raporty
+
+*** Nikto
+
+    {{{./reports/security/nikto/nikto_iosr_client.pdf}raport Nikto}}
+
+*** Nessus
+
+    {{{./reports/security/nessus/nessus_iosr_client_scan.pdf}raport Nessus}}
+
+*** Exploit-Me
+
+    * SQL-Inject-Me
+
+    {{{./reports/security/exploit_me/sql_inject_me/login.pdf} login}}
+
+    {{{./reports/security/exploit_me/sql_inject_me/administrator_add.pdf} administrator/add}}
+
+    {{{./reports/security/exploit_me/sql_inject_me/administrator_edit.pdf} administrator/edit}}
+
+    {{{./reports/security/exploit_me/sql_inject_me/administrator_list.pdf} administrator/list}}
+
+    {{{./reports/security/exploit_me/sql_inject_me/stockCompanies.pdf} stockCompanies}}
+
+    {{{./reports/security/exploit_me/sql_inject_me/tenant_add.pdf} tenant/add}}
+
+    {{{./reports/security/exploit_me/sql_inject_me/tenant_edit.pdf} tenant/edit}}
+
+    {{{./reports/security/exploit_me/sql_inject_me/tenant_list.pdf} tenant/list}}
+
+    * XSS-Me
+
+        * przed zmianami
+
+            {{{./reports/security/exploit_me/xss_me/before_fix/login.pdf} login}}
+
+            {{{./reports/security/exploit_me/xss_me/before_fix/administrator_add.pdf} administrator/add}}
+
+            {{{./reports/security/exploit_me/xss_me/before_fix/stockCompanies.pdf} stockCompanies}}
+
+            {{{./reports/security/exploit_me/xss_me/before_fix/tenant_add.pdf} tenant/add}}
+
+        * po zmianach
+
+            {{{./reports/security/exploit_me/xss_me/after_fix/administrator_add.pdf} administrator/add}}
+
+            {{{./reports/security/exploit_me/xss_me/after_fix/stockCompanies.pdf} stockCompanies}}
+
+            {{{./reports/security/exploit_me/xss_me/after_fix/stockCompanies_extended.pdf} stockCompanies - extended}}
+
+            {{{./reports/security/exploit_me/xss_me/after_fix/tenant_add.pdf} tenant/add}}
+
+
+
 
